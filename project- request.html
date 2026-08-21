@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Submit your project request to Omo Rabi Software.">
+
+    <title>Start a Project | Omo Rabi Software</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #101828;
+            color: white;
+            padding: 18px 20px;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .header-label {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 850px;
+            margin: 40px auto;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            max-width: 650px;
+            margin: auto;
+            color: #667085;
+        }
+
+        .form-card {
+            background: white;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.07);
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h2 {
+            font-size: 19px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .required {
+            color: #e11d48;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d0d5dd;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            background: white;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .project-types {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .project-option {
+            position: relative;
+        }
+
+        .project-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .project-option label {
+            display: block;
+            padding: 15px;
+            border: 1px solid #d0d5dd;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .project-option label:hover {
+            border-color: #2563eb;
+            background: #f8faff;
+        }
+
+        .project-option input:checked + label {
+            border-color: #2563eb;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-weight: bold;
+        }
+
+        .notice {
+            margin-top: 18px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+            color: #667085;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 11px;
+            background: #2563eb;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .success {
+            display: none;
+            background: #ecfdf3;
+            border: 1px solid #a7f3d0;
+            color: #047857;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #667085;
+            font-size: 14px;
+        }
+
+        @media (max-width: 650px) {
+
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .intro h1 {
+                font-size: 28px;
+            }
+
+            .form-card {
+                padding: 22px;
+            }
+
+            .row,
+            .project-types {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="header-content">
+
+        <div class="logo">
+            Omo Rabi <span>Software</span>
+        </div>
+
+        <div class="header-label">
+            PROJECT REQUEST
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <section class="intro">
+
+        <h1>
+            Start Your Project
+        </h1>
+
+        <p>
+            Tell us about your idea, business or software
+            project. We'll review your request and discuss
+            the next steps with you.
+        </p>
+
+    </section>
+
+
+
+    <section class="form-card">
+
+
+        <form id="projectForm">
+
+
+            <div class="form-section">
+
+                <h2>
+                    👤 Your Information
+                </h2>
+
+
+                <div class="row">
+
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Your full name"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="company">
+                            Business / Company
+                        </label>
+
+                        <input
+                            type="text"
+                            id="company"
+                            placeholder="Business name">
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone / WhatsApp
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="+234..."
+                            required>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-section">
+
+                <h2>
+                    💻 Project Information
+                </h2>
+
+
+                <div class="form-group">
+
+                    <label>
+                        What do you need?
+                        <span class="required">*</span>
+                    </label>
+
+
+                    <div class="project-types">
+
+
+                        <div class="project-option">
+
+                            <input
+                                type="radio"
+                                name="projectType"
+                                id="website"
+                                value="Website"
+                                required>
+
+                            <label for="website">
+                                🌐 Website
+                            </label>
+
+                        </div>
+
+
+
+                        <div class="project-option">
+
+                            <input
+                                type="radio"
+                                name="projectType"
+                                id="software"
+                                value="Software">
+
+                            <label for="software">
+                                💻 Software
+                            </label>
+
+                        </div>
+
+
+
+                        <div class="project-option">
+
+                            <input
+                                type="radio"
+                                name="projectType"
+                                id="mobile"
+                                value="Mobile App">
+
+                            <label for="mobile">
+                                📱 Mobile App
+                            </label>
+
+                        </div>
+
+
+
+                        <div class="project-option">
+
+                            <input
+                                type="radio"
+                                name="projectType"
+                                id="security"
+                                value="Cybersecurity">
+
+                            <label for="security">
+                                🔐 Cybersecurity
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Tell us about your project
+                        <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Describe what you want us to build..."
+                        required></textarea>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="deadline">
+                        Desired Completion Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="deadline">
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-section">
+
+                <h2>
+                    💰 Estimated Budget
+                </h2>
+
+
+                <p style="color:#667085; margin-bottom:18px;">
+
+                    How much are you planning or willing
+                    to spend on this project?
+
+                    This is an estimate, not a payment
+                    or deposit.
+
+                </p>
+
+
+                <div class="row">
+
+
+                    <div class="form-group">
+
+                        <label for="currency">
+                            Currency
+                        </label>
+
+                        <select id="currency">
+
+                            <option value="USD">
+                                USD — $
+                            </option>
+
+                            <option value="GBP">
+                                GBP — £
+                            </option>
+
+                            <option value="EUR">
+                                EUR — €
+                            </option>
+
+                            <option value="NGN">
+                                NGN — ₦
+                            </option>
+
+                            <option value="CAD">
+                                CAD — $
+                            </option>
+
+                            <option value="AUD">
+                                AUD — $
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="budget">
+                            Estimated Amount
+                        </label>
+
+                        <input
+                            type="number"
+                            id="budget"
+                            min="0"
+                            placeholder="Example: 500">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <button
+                type="submit"
+                class="submit-btn">
+
+                Submit Project Request
+
+            </button>
+
+
+            <div class="notice">
+
+                Your request will be saved on this device
+                in this prototype.
+
+            </div>
+
+
+            <div
+                class="success"
+                id="successMessage">
+
+                <h3>
+                    Request Saved! 🎉
+                </h3>
+
+                <p>
+                    Your project request has been saved
+                    successfully in this prototype.
+                </p>
+
+            </div>
+
+
+        </form>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    © 2026 Omo Rabi Software.
+    All rights reserved.
+
+</footer>
+
+
+
+<script>
+
+    document
+        .getElementById("projectForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const selectedType =
+                document.querySelector(
+                    'input[name="projectType"]:checked'
+                );
+
+
+            const selectedBudget =
+                document.querySelector(
+                    'input[name="budget"]:checked'
+                );
+
+
+            const request = {
+
+                id:
+                    "ORS-" +
+                    Date.now(),
+
+                name:
+                    document.getElementById("name").value.trim(),
+
+                company:
+                    document.getElementById("company").value.trim(),
+
+                email:
+                    document.getElementById("email").value.trim(),
+
+                phone:
+                    document.getElementById("phone").value.trim(),
+
+                projectType:
+                    selectedType
+                    ? selectedType.value
+                    : "",
+
+                description:
+                    document.getElementById("description").value.trim(),
+
+                deadline:
+                    document.getElementById("deadline").value,
+
+                currency:
+                    document.getElementById("currency").value,
+
+                budget:
+                    document.getElementById("budget").value,
+
+                submittedAt:
+                    new Date().toLocaleString()
+
+            };
+
+
+            localStorage.setItem(
+                "omoRabiProjectRequest",
+                JSON.stringify(request)
+            );
+
+
+            document
+                .getElementById("successMessage")
+                .style.display = "block";
+
+
+            document
+                .getElementById("successMessage")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        });

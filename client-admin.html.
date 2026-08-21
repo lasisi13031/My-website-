@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Omo Rabi Software project administration dashboard.">
+
+    <title>Admin Manager | Omo Rabi Software</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background: #f5f7fb;
+
+            color: #172033;
+
+            line-height: 1.6;
+
+        }
+
+
+        header {
+
+            background: #101828;
+
+            color: white;
+
+            padding: 18px 20px;
+
+        }
+
+
+        .header-content {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .logo {
+
+            font-size: 21px;
+
+            font-weight: 800;
+
+        }
+
+
+        .logo span {
+
+            color: #38bdf8;
+
+        }
+
+
+        .admin-label {
+
+            font-size: 13px;
+
+            opacity: 0.8;
+
+        }
+
+
+        .container {
+
+            width: 92%;
+
+            max-width: 1100px;
+
+            margin: 35px auto;
+
+        }
+
+
+        .intro {
+
+            background: white;
+
+            padding: 28px;
+
+            border-radius: 18px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.06);
+
+        }
+
+
+        .intro h1 {
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .intro p {
+
+            color: #667085;
+
+        }
+
+
+        .card {
+
+            background: white;
+
+            padding: 28px;
+
+            border-radius: 18px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.06);
+
+        }
+
+
+        .card h2 {
+
+            font-size: 20px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .empty {
+
+            padding: 25px;
+
+            background: #f8fafc;
+
+            border-radius: 12px;
+
+            color: #667085;
+
+            text-align: center;
+
+        }
+
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 16px;
+
+        }
+
+
+        .info-item {
+
+            background: #f8fafc;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+        }
+
+
+        .info-item strong {
+
+            display: block;
+
+            font-size: 13px;
+
+            color: #667085;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .info-item span {
+
+            word-break: break-word;
+
+        }
+
+
+        .description {
+
+            margin-top: 16px;
+
+            background: #f8fafc;
+
+            padding: 18px;
+
+            border-radius: 10px;
+
+        }
+
+
+        .description strong {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .row {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        .form-group {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        input,
+        select {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #d0d5dd;
+
+            border-radius: 10px;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            outline: none;
+
+        }
+
+
+        input:focus,
+        select:focus {
+
+            border-color: #2563eb;
+
+        }
+
+
+        .currency-input {
+
+            display: grid;
+
+            grid-template-columns:
+                120px 1fr;
+
+            gap: 10px;
+
+        }
+
+
+        .progress-value {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-top: 7px;
+
+        }
+
+
+        input[type="range"] {
+
+            padding: 0;
+
+        }
+
+
+        .money-summary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-top: 10px;
+
+        }
+
+
+        .money-box {
+
+            padding: 18px;
+
+            border-radius: 12px;
+
+            background: #f8fafc;
+
+        }
+
+
+        .money-box strong {
+
+            display: block;
+
+            color: #667085;
+
+            font-size: 13px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .money-box span {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+        }
+
+
+        .save-btn {
+
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        .save-btn:hover {
+
+            background: #1d4ed8;
+
+        }
+
+
+        .danger-btn {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #fef2f2;
+
+            color: #b42318;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            margin-top: 12px;
+
+        }
+
+
+        .success {
+
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            background: #ecfdf3;
+
+            color: #047857;
+
+            border: 1px solid #a7f3d0;
+
+            text-align: center;
+
+        }
+
+
+        footer {
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #667085;
+
+            font-size: 14px;
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .header-content {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .info-grid,
+            .row,
+            .money-summary {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .currency-input {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+    <div class="header-content">
+
+        <div class="logo">
+
+            Omo Rabi <span>Software</span>
+
+        </div>
+
+
+        <div class="admin-label">
+
+            ADMIN PROJECT MANAGER
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <section class="intro">
+
+        <h1>
+            Project Manager
+        </h1>
+
+        <p>
+            Review client requests, manage project
+            progress and record project finances.
+        </p>
+
+    </section>
+
+
+
+    <section class="card">
+
+        <h2>
+            📥 Client Project Request
+        </h2>
+
+
+        <div
+            id="requestArea"
+            class="empty">
+
+            No project request has been received
+            on this device yet.
+
+        </div>
+
+    </section>
+
+
+
+    <section class="card">
+
+        <h2>
+            ⚙️ Project Management
+        </h2>
+
+
+        <div class="row">
+
+
+            <div class="form-group">
+
+                <label for="projectStatus">
+
+                    Project Status
+
+                </label>
+
+
+                <select id="projectStatus">
+
+                    <option>
+                        Request Received
+                    </option>
+
+                    <option>
+                        Quote Preparation
+                    </option>
+
+                    <option>
+                        Awaiting Client Approval
+                    </option>
+
+                    <option selected>
+                        In Development
+                    </option>
+
+                    <option>
+                        Testing
+                    </option>
+
+                    <option>
+                        Completed
+                    </option>
+
+                    <option>
+                        Cancelled
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="currentTask">
+
+                    Current Task
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="currentTask"
+                    placeholder="Example: Homepage development">
+
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label for="progress">
+
+                Project Progress
+
+            </label>
+
+
+            <input
+                type="range"
+                id="progress"
+                min="0"
+                max="100"
+                value="0"
+                oninput="updateProgress()">
+
+
+            <div class="progress-value">
+
+                <span id="progressNumber">
+                    0
+                </span>%
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <section class="card">
+
+        <h2>
+            💰 Project Financials
+        </h2>
+
+
+        <div class="row">
+
+
+            <div class="form-group">
+
+                <label for="priceCurrency">
+
+                    Currency
+
+                </label>
+
+
+                <select id="priceCurrency">
+
+                    <option value="USD">
+                        USD — $
+                    </option>
+
+                    <option value="GBP">
+                        GBP — £
+                    </option>
+
+                    <option value="EUR">
+                        EUR — €
+                    </option>
+
+                    <option value="NGN">
+                        NGN — ₦
+                    </option>
+
+                    <option value="CAD">
+                        CAD — $
+                    </option>
+
+                    <option value="AUD">
+                        AUD — $
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="projectPrice">
+
+                    Official Project Price
+
+                </label>
+
+
+                <input
+                    type="number"
+                    id="projectPrice"
+                    min="0"
+                    placeholder="Example: 750"
+                    oninput="calculateBalance()">
+
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label for="deposit">
+
+                Deposit Paid
+
+            </label>
+
+
+            <input
+                type="number"
+                id="deposit"
+                min="0"
+                placeholder="Example: 300"
+                oninput="calculateBalance()">
+
+        </div>
+
+
+
+        <div class="money-summary">
+
+
+            <div class="money-box">
+
+                <strong>
+                    Project Price
+                </strong>
+
+                <span id="priceDisplay">
+                    0
+                </span>
+
+            </div>
+
+
+
+            <div class="money-box">
+
+                <strong>
+                    Deposit Paid
+                </strong>
+
+                <span id="depositDisplay">
+                    0
+                </span>
+
+            </div>
+
+
+
+            <div class="money-box">
+
+                <strong>
+                    Balance Due
+                </strong>
+
+                <span id="balanceDisplay">
+                    0
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <section class="card">
+
+        <h2>
+            📝 Project Update
+        </h2>
+
+
+        <div class="form-group">
+
+            <label for="latestUpdate">
+
+                Latest Update
+
+            </label>
+
+
+            <input
+                type="text"
+                id="latestUpdate"
+                placeholder="Example: Homepage completed">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="nextTask">
+
+                Next Task
+
+            </label>
+
+
+            <input
+                type="text"
+                id="nextTask"
+                placeholder="Example: Build contact page">
+
+        </div>
+
+
+        <button
+            class="save-btn"
+            onclick="saveAdminData()">
+
+            Save Project Management Update
+
+        </button>
+
+
+        <div
+            id="successMessage"
+            class="success">
+
+            Project management information saved
+            successfully on this device. ✅
+
+        </div>
+
+
+        <button
+            class="danger-btn"
+            onclick="deleteRequest()">
+
+            Delete Saved Request
+
+        </button>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    © 2026 Omo Rabi Software —
+    Admin Project Management System
+
+</footer>
+
+
+
+<script>
+
+
+let requestData = null;
+
+
+
+function loadRequest() {
+
+
+    const savedRequest =
+        localStorage.getItem(
+            "omoRabiProjectRequest"
+        );
+
+
+    if (!savedRequest) {
+
+        return;
+
+    }
+
+
+    try {
+
+        requestData =
+            JSON.parse(savedRequest);
+
+    }
+
+    catch (error) {
+
+        return;
+
+    }
+
+
+    const area =
+        document.getElementById(
+            "requestArea"
+        );
+
+
+    area.className = "";
+
+
+    area.innerHTML = `
+
+        <div class="info-grid">
+
+            <div class="info-item">
+
+                <strong>Request ID</strong>
+
+                <span>
+                    ${safe(requestData.id)}
+                </span>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <strong>Client Name</strong>
+
+                <span>
+                    ${safe(requestData.name)}
+                </span>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <strong>Business / Company</strong>
+
+                <span>
+                    ${safe(requestData.company || "Not provided")}
+                </span>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <strong>Email</strong>
+
+                <span>
+                    ${safe(requestData.email)}
+                </span>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <strong>Phone / WhatsApp</strong>
+
+                <span>
+                    ${safe(requestData.phone)}
+                </span>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <strong>Project Type</strong>
+
+                <span>
+                    ${safe(requestData.projectType)}
+                </span>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <strong>Estimated Budget</strong>
+
+                <span>
+                    ${safe(requestData.currency)}
+                    ${safe(requestData.budget || "Not provided")}
+                </span>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <strong>Desired Completion</strong>
+
+                <span>
+                    ${safe(requestData.deadline || "Not specified")}
+                </span>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <strong>Submitted</strong>
+
+                <span>
+                    ${safe(requestData.submittedAt)}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="description">
+
+            <strong>
+                Project Description
+            </strong>
+
+            <span>
+                ${safe(requestData.description)}
+            </span>
+
+        </div>
+
+    `;
+
+
+}
+
+
+
+function safe(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+function updateProgress() {
+
+
+    const value =
+        document.getElementById(
+            "progress"
+        ).value;
+
+
+    document.getElementById(
+        "progressNumber"
+    ).textContent = value;
+
+}
+
+
+
+function calculateBalance() {
+
+
+    const price =
+        Number(
+            document.getElementById(
+                "projectPrice"
+            ).value
+        ) || 0;
+
+
+    const deposit =
+        Number(
+            document.getElementById(
+                "deposit"
+            ).value
+        ) || 0;
+
+
+    const balance =
+        Math.max(
+            price - deposit,
+            0
+        );
+
+
+    const currency =
+        document.getElementById(
+            "priceCurrency"
+        ).value;
+
+
+    document.getElementById(
+        "priceDisplay"
+    ).textContent =
+        currency + " " + price;
+
+
+    document.getElementById(
+        "depositDisplay"
+    ).textContent =
+        currency + " " + deposit;
+
+
+    document.getElementById(
+        "balanceDisplay"
+    ).textContent =
+        currency + " " + balance;
+
+}
+
+
+
+function saveAdminData() {
+
+
+    const data = {
+
+        request:
+            requestData,
+
+        status:
+            document.getElementById(
+                "projectStatus"
+            ).value,
+
+        currentTask:
+            document.getElementById(
+                "currentTask"
+            ).value.trim(),
+
+        progress:
+            document.getElementById(
+                "progress"
+            ).value,
+
+        currency:
+            document.getElementById(
+                "priceCurrency"
+            ).value,
+
+        projectPrice:
+            document.getElementById(
+                "projectPrice"
+            ).value,
+
+        deposit:
+            document.getElementById(
+                "deposit"
+            ).value,
+
+        latestUpdate:
+            document.getElementById(
+                "latestUpdate"
+            ).value.trim(),
+
+        nextTask:
+            document.getElementById(
+                "nextTask"
+            ).value.trim(),
+
+        savedAt:
+            new Date().toLocaleString()
+
+    };
+
+
+    localStorage.setItem(
+
+        "omoRabiAdminProject",
+
+        JSON.stringify(data)
+
+    );
+
+
+    document.getElementById(
+        "successMessage"
+    ).style.display = "block";
+
+
+    setTimeout(function() {
+
+        document.getElementById(
+            "successMessage"
+        ).style.display = "none";
+
+    }, 3000);
+
+}
+
+
+
+function loadAdminData() {
+
+
+    const saved =
+        localStorage.getItem(
+            "omoRabiAdminProject"
+        );
+
+
+    if (!saved) {
+
+        calculateBalance();
+
+        return;
+
+    }
+
+
+    try {
+
+        const data =
+            JSON.parse(saved);
+
+
+        if (data.status) {
+
+            document.getElementById(
+                "projectStatus"
+            ).value =
+                data.status;
+
+        }
+
+
+        document.getElementById(
+            "currentTask"
+        ).value =
+            data.currentTask || "";
+
+
+        document.getElementById(
+            "progress"
+        ).value =
+            data.progress || 0;
+
+
+        document.getElementById(
+            "priceCurrency"
+        ).value =
+            data.currency || "USD";
+
+
+        document.getElementById(
+            "
