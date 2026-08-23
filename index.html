@@ -1,231 +1,6087 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Billora - Smart Billing</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Billora - Smart Billing</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#dbeafe,#ede9fe,#dcfce7);
+    color:#172033;
+    min-height:100vh;
+}
+
+.header{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    padding:22px 18px;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+.tagline{
+    margin-top:5px;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:16px;
+}
+
+/* TOP MENU */
+
+.menu{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding:4px 0 18px;
+}
+
+.menu button{
+    border:none;
+    background:white;
+    color:#1e3a8a;
+    padding:11px 15px;
+    border-radius:20px;
+    font-weight:bold;
+    white-space:nowrap;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+/* TITLES */
+
+.page-title{
+    margin-bottom:18px;
+}
+
+.page-title h2{
+    color:#172554;
+    font-size:25px;
+}
+
+.page-title p{
+    color:#64748b;
+    margin-top:6px;
+}
+
+/* BEAUTIFUL BOXES */
+
+.box{
+    padding:20px;
+    margin-bottom:18px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(15,23,42,.10);
+}
+
+.blue-box{
+    background:linear-gradient(145deg,#eff6ff,#dbeafe);
+}
+
+.purple-box{
+    background:linear-gradient(145deg,#faf5ff,#ede9fe);
+}
+
+.green-box{
+    background:linear-gradient(145deg,#f0fdf4,#dcfce7);
+}
+
+.orange-box{
+    background:linear-gradient(145deg,#fff7ed,#ffedd5);
+}
+
+.cyan-box{
+    background:linear-gradient(145deg,#ecfeff,#cffafe);
+}
+
+.pink-box{
+    background:linear-gradient(145deg,#fdf2f8,#fce7f3);
+}
+
+.dark-box{
+    background:linear-gradient(145deg,#172554,#1e3a8a);
+    color:white;
+}
+
+.box-title{
+    font-size:19px;
+    font-weight:bold;
+    color:#1e3a8a;
+    margin-bottom:15px;
+}
+
+.dark-box .box-title{
+    color:white;
+}
+
+/* DASHBOARD */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.stat-card{
+    background:white;
+    padding:16px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.07);
+}
+
+.stat-card small{
+    color:#64748b;
+}
+
+.stat-card strong{
+    display:block;
+    margin-top:7px;
+    font-size:20px;
+    color:#1e3a8a;
+}
+
+/* FORM */
+
+.form-group{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    color:#334155;
+    margin-bottom:7px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    border:2px solid #cbd5e1;
+    border-radius:12px;
+    background:white;
+    font-size:15px;
+    outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#2563eb;
+}
+
+/* TWO FIELDS */
+
+.two-fields{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+/* ITEMS */
+
+.item-box{
+    background:white;
+    padding:16px;
+    border-radius:15px;
+    margin-bottom:12px;
+    border:2px solid #bbf7d0;
+}
+
+.item-number{
+    color:#15803d;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+/* BUTTONS */
+
+.btn{
+    width:100%;
+    border:none;
+    padding:15px;
+    border-radius:12px;
+    font-size:15px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.blue-btn{
+    background:linear-gradient(135deg,#2563eb,#0891b2);
+    color:white;
+}
+
+.green-btn{
+    background:linear-gradient(135deg,#15803d,#22c55e);
+    color:white;
+}
+
+.orange-btn{
+    background:linear-gradient(135deg,#ea580c,#f59e0b);
+    color:white;
+}
+
+.purple-btn{
+    background:linear-gradient(135deg,#7e22ce,#a855f7);
+    color:white;
+}
+
+/* SUMMARY */
+
+.summary{
+    background:white;
+    padding:16px;
+    border-radius:15px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    padding:11px 0;
+    border-bottom:1px solid #e2e8f0;
+}
+
+.summary-row:last-child{
+    border-bottom:none;
+}
+
+.big-total{
+    color:#1e3a8a;
+    font-size:22px;
+}
+
+/* CUSTOMER */
+
+.customer-card{
+    background:white;
+    padding:18px;
+    border-radius:16px;
+    margin-bottom:14px;
+    border-left:5px solid #7c3aed;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.customer-card h3{
+    color:#5b21b6;
+    margin-bottom:10px;
+}
+
+/* INVOICE HISTORY */
+
+.invoice-card{
+    background:#f8fafc;
+    padding:14px;
+    border-radius:12px;
+    margin-top:10px;
+}
+
+/* STATUS */
+
+.status{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.unpaid{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.partial{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.paid{
+    background:#dcfce7;
+    color:#166534;
+}
+
+/* HIDE PAGES */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.empty{
+    text-align:center;
+    color:#64748b;
+    padding:25px;
+}
+
+/* PHONE */
+
+@media(max-width:500px){
+
+    .two-fields{
+        grid-template-columns:1fr;
+    }
+
+    .dashboard-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+</style>
 </head>
-<body>
+
+<>
 
 <header class="header">
-    <div class="logo">Bill<span>ora</span></div>
-    <div class="tagline">Smart Billing for Modern Businesses</div>
+
+    <div class="logo">
+        Bill<span>ora</span>
+    </div>
+
+    <div class="tagline">
+        Smart Billing for Modern Businesses
+    </div>
+
 </header>
+
 
 <div class="container">
 
-    <nav class="menu">
-        <button data-page="0">🏠 Dashboard</button>
-        <button data-page="1">🧾 Invoice</button>
-        <button data-page="2">👥 Customers</button>
-        <button data-page="3">📊 Reports</button>
-        <button data-page="4">⚙️ Settings</button>
-    </nav>
+    <!-- MENU -->
 
-    <main>
-        <!-- DASHBOARD -->
-        <section class="page active">
-            <div class="page-title">
-                <h2>Smart Billing Dashboard</h2>
-                <p>Manage your invoices, customers and payments easily.</p>
+    <div class="menu">
+
+        <button>🏠 Dashboard</button>
+
+        <button>🧾 Invoice</button>
+
+        <button>👥 Customers</button>
+
+        <button>📊 Reports</button>
+
+        <button>⚙️ Settings</button>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <section class="page active">
+
+        <div class="page-title">
+
+            <h2>Smart Billing Dashboard</h2>
+
+            <p>
+                Manage your invoices, customers and payments easily.
+            </p>
+
+        </div>
+
+
+        <div class="box blue-box">
+
+            <div class="box-title">
+                📊 Business Overview
             </div>
 
-            <div class="box blue-box">
-                <div class="box-title">📊 Business Overview</div>
-                <div class="dashboard-grid">
-                    <div class="stat-card"><small>Total Invoice</small><strong id="dashInvoice">₦0.00</strong></div>
-                    <div class="stat-card"><small>Total Paid</small><strong id="dashPaid">₦0.00</strong></div>
-                    <div class="stat-card"><small>Remaining</small><strong id="dashRemaining">₦0.00</strong></div>
-                    <div class="stat-card"><small>Customers</small><strong id="dashCustomers">0</strong></div>
-                </div>
-            </div>
+            <div class="dashboard-grid">
 
-            <div class="box purple-box">
-                <div class="box-title">⚡ Quick Actions</div>
-                <button class="btn blue-btn" id="quickInvoice">➕ Create New Invoice</button>
-                <button class="btn purple-btn" id="quickCustomer">👤 Add Customer</button>
-            </div>
-        </section>
-
-        <!-- INVOICE -->
-        <section class="page">
-            <div class="page-title">
-                <h2>🧾 Create Invoice</h2>
-                <p>Create a professional invoice for your customer.</p>
-            </div>
-
-            <div class="box purple-box">
-                <div class="box-title">👤 Customer Information</div>
-
-                <div class="form-group">
-                    <label>Customer Name</label>
-                    <input id="customerName" type="text" placeholder="Enter customer name">
+                <div class="stat-card">
+                    <small>Total Invoice</small>
+                    <strong>₦0.00</strong>
                 </div>
 
+                <div class="stat-card">
+                    <small>Total Paid</small>
+                    <strong>₦0.00</strong>
+                </div>
+
+                <div class="stat-card">
+                    <small>Remaining</small>
+                    <strong>₦0.00</strong>
+                </div>
+
+                <div class="stat-card">
+                    <small>Customers</small>
+                    <strong>0</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK ACTION -->
+
+        <div class="box purple-box">
+
+            <div class="box-title">
+                ⚡ Quick Actions
+            </div>
+
+            <button class="btn blue-btn">
+                ➕ Create New Invoice
+            </button>
+
+            <button class="btn purple-btn">
+                👤 Add Customer
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- INVOICE PAGE -->
+
+    <section class="page">
+
+        <div class="page-title">
+
+            <h2>🧾 Create Invoice</h2>
+
+            <p>
+                Create a professional invoice for your customer.
+            </p>
+
+        </div>
+
+
+        <!-- CUSTOMER BOX -->
+
+        <div class="box purple-box">
+
+            <div class="box-title">
+                👤 Customer Information
+            </div>
+
+            <div class="form-group">
+
+                <label>Customer Name</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter customer name">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Customer Phone</label>
+
+                <input
+                    type="tel"
+                    placeholder="Enter customer phone">
+
+            </div>
+
+            <div class="two-fields">
+
                 <div class="form-group">
-                    <label>Customer Phone</label>
-                    <input id="customerPhone" type="tel" placeholder="Enter customer phone">
+
+                    <label>Invoice Number</label>
+
+                    <input
+                        type="text"
+                        placeholder="INV-0001">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Invoice Date</label>
+
+                    <input type="date">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CURRENCY BOX -->
+
+        <div class="box orange-box">
+
+            <div class="box-title">
+                💰 Currency
+            </div>
+
+            <div class="form-group">
+
+                <label>Select Currency</label>
+
+                <select>
+
+                    <option>₦ Nigerian Naira</option>
+
+                    <option>$ US Dollar</option>
+
+                    <option>£ British Pound</option>
+
+                    <option>€ Euro</option>
+
+                    <option>$ Canadian Dollar</option>
+
+                    <option>$ Australian Dollar</option>
+
+                    <option>R South African Rand</option>
+
+                    <option>₵ Ghanaian Cedi</option>
+
+                    <option>KSh Kenyan Shilling</option>
+
+                    <option>د.إ UAE Dirham</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADD ITEMS -->
+
+        <div class="box green-box">
+
+    <div class="box-title">
+        📦 Products & Services
+    </div>
+
+    <div id="itemsContainer">
+
+        <div class="item-box">
+
+            <div class="item-number">
+                Item 1
+            </div>
+
+            <div class="form-group">
+
+                <label>
+                    Product / Service
+                </label>
+
+                <input
+                    type="text"
+                    class="product-name"
+                    placeholder="Enter item name">
+
+            </div>
+
+            <div class="two-fields">
+
+                <div class="form-group">
+
+                    <label>
+                        Quantity
+                    </label>
+
+                    <input
+                        type="number"
+                        class="product-quantity"
+                        value="1"
+                        min="1">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Price
+                    </label>
+
+                    <input
+                        type="number"
+                        class="product-price"
+                        placeholder="Enter price"
+                        min="0">
+
+                </div>
+
+            </div>
+
+            <div class="item-total-box">
+
+                <span>
+                    Item Total
+                </span>
+
+                <strong class="item-total">
+                    ₦0.00
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        id="addAnotherItem"
+        class="btn blue-btn">
+
+        ➕ Add Another Item
+
+    </button>
+
+
+    <div
+        class="order-total-box"
+        style="
+            margin-top:18px;
+            padding:18px;
+            border-radius:14px;
+            background:#dbeafe;
+            border:2px solid #38bdf8;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        ">
+
+        <strong>
+            🛒 ORDER TOTAL
+        </strong>
+
+        <strong
+            id="orderTotalAmount"
+            style="
+                font-size:20px;
+                color:#075985;
+            ">
+
+            ₦0.00
+
+        </strong>
+
+    </div>
+
+        </div>
+
+            
+            
+            
+
+            
+
+                
+                
+                
+
+                
+
+                  
+                    
+                  
+
+                  
+                      
+                      
+
+                
+
+                
+
+                    
+
+                        
+
+                        
+                          
+                          
+                          
+
+                    
+
+                    
+
+                    
+        
+
+            
+                💳 Payment Information
+            </>
+
+            <div class="form-group">
+
+                <label>Discount</label>
+
+                <input
+                    type="number"
+                    placeholder="0"
+                    min="0">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Amount Paid</label>
+
+                <input
+                    type="number"
+                    placeholder="Enter amount paid"
+                    min="0">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Payment Method</label>
+
+                <select>
+
+                    <option>Cash</option>
+
+                    <option>Bank Transfer</option>
+
+                    <option>POS</option>
+
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+        </>
+
+
+        <!-- INVOICE SUMMARY -->
+
+        <div class="box blue-box">
+
+            <div class="box-title">
+                📋 Invoice Summary
+            </div>
+
+            <div class="summary">
+
+                <div class="summary-row">
+
+                    <span>Subtotal</span>
+
+                    <strong>₦0.00</strong>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>Discount</span>
+
+                    <strong>₦0.00</strong>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>Total Invoice</span>
+
+                    <strong class="big-total">
+                        ₦0.00
+                    </strong>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>Amount Paid</span>
+
+                    <strong>₦0.00</strong>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>Remaining Balance</span>
+
+                    <strong>
+                        ₦0.00
+                    </strong>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>Status</span>
+
+                    <span class="status unpaid">
+                        Unpaid
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAVE INVOICE -->
+
+        <div class="box dark-box">
+
+            <div class="box-title">
+                💾 Invoice Actions
+            </div>
+
+            <button class="btn green-btn">
+                💾 Save Invoice
+            </button>
+
+            <button class="btn orange-btn">
+                🖨️ Print / Save PDF
+            </button>
+
+        </div>
+
+
+        <!-- SAVED INVOICES -->
+
+        <div class="box pink-box">
+
+            <div class="box-title">
+                📚 Saved Invoices
+            </div>
+
+            <div class="invoice-card">
+
+                <div class="empty">
+                    No saved invoices yet.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CUSTOMERS PAGE -->
+
+    <section class="page">
+
+        <div class="page-title">
+
+            <h2>👥 Customers</h2>
+
+            <p>
+                View customers, invoices and outstanding balances.
+            </p>
+
+        </div>
+
+
+        <div class="box purple-box">
+
+            <div class="box-title">
+                🔎 Search Customer
+            </div>
+
+            <input
+                type="text"
+                placeholder="Search customer...">
+
+        </div>
+
+
+        <div class="customer-card">
+
+            <h3>👤 Customer Name</h3>
+
+            <p>
+                📞 Phone Number
+            </p>
+
+            <br>
+
+            <p>
+                Total Invoices:
+                <strong>0</strong>
+            </p>
+
+            <p>
+                Total Invoice:
+                <strong>₦0.00</strong>
+            </p>
+
+            <p>
+                Total Paid:
+                <strong>₦0.00</strong>
+            </p>
+
+            <p>
+                Remaining Balance:
+                <strong>₦0.00</strong>
+            </p>
+
+            <br>
+
+            <strong>🧾 Customer Invoice History</strong>
+
+            <div class="invoice-card">
+
+                No invoice yet.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REPORTS PAGE -->
+
+    <section class="page">
+
+        <div class="page-title">
+
+            <h2>📊 Reports</h2>
+
+            <p>
+                See your billing performance.
+            </p>
+
+        </div>
+
+
+        <div class="box blue-box">
+
+            <div class="box-title">
+                📈 Billing Summary
+            </div>
+
+            <div class="dashboard-grid">
+
+                <div class="stat-card">
+                    <small>Total Invoice</small>
+                    <strong>₦0.00</strong>
+                </div>
+
+                <div class="stat-card">
+                    <small>Total Paid</small>
+                    <strong>₦0.00</strong>
+                </div>
+
+                <div class="stat-card">
+                    <small>Outstanding</small>
+                    <strong>₦0.00</strong>
+                </div>
+
+                <div class="stat-card">
+                    <small>Invoices</small>
+                    <strong>0</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SETTINGS PAGE -->
+
+    <section class="page">
+
+        <div class="page-title">
+
+            <h2>⚙️ Business Settings</h2>
+
+            <p>
+                Add your business information.
+            </p>
+
+        </div>
+
+
+        <div class="box orange-box">
+
+            <div class="box-title">
+                🏢 Business Information
+            </div>
+
+            <div class="form-group">
+
+                <label>Business Name</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter business name">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Business Phone</label>
+
+                <input
+                    type="tel"
+                    placeholder="Enter business phone">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Business Email</label>
+
+                <input
+                    type="email"
+                    placeholder="Enter business email">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Business Address</label>
+
+                <textarea
+                    rows="3"
+                    placeholder="Enter business address"></textarea>
+
+            </div>
+
+            <button class="btn blue-btn">
+                💾 Save Business Information
+            </button>
+
+        </div>
+
+    </section>
+
+</>
+
+<script>
+
+const pages = document.querySelectorAll(".page");
+const menuButtons = document.querySelectorAll(".menu button");
+
+function showPage(pageNumber) {
+
+    pages.forEach(function(page, index) {
+
+        if (index === pageNumber) {
+            page.classList.add("active");
+        } else {
+            page.classList.remove("active");
+        }
+
+    });
+
+    menuButtons.forEach(function(button, index) {
+
+        if (index === pageNumber) {
+
+            button.style.background =
+                "linear-gradient(135deg,#2563eb,#0891b2)";
+
+            button.style.color = "white";
+
+        } else {
+
+            button.style.background = "white";
+
+            button.style.color = "#1e3a8a";
+
+        }
+
+    });
+
+}
+
+menuButtons[0].onclick = function() {
+    showPage(0);
+};
+
+menuButtons[1].onclick = function() {
+    showPage(1);
+};
+
+menuButtons[2].onclick = function() {
+    showPage(2);
+};
+
+menuButtons[3].onclick = function() {
+    showPage(3);
+};
+
+menuButtons[4].onclick = function() {
+    showPage(4);
+};
+
+showPage(0);
+
+</script>
+
+<script>
+
+const invoicePage = pages[1];
+
+const itemsSection =
+    invoicePage.querySelector(".green-box");
+
+const addItemButton =
+    itemsSection.querySelector("button");
+
+let itemCount =
+    itemsSection.querySelectorAll(".item-box").length;
+
+
+function updateItemNumbers() {
+
+    const items =
+        itemsSection.querySelectorAll(".item-box");
+
+    items.forEach(function(item, index) {
+
+        const number =
+            item.querySelector(".item-number");
+
+        number.textContent =
+            "Item " + (index + 1);
+
+    });
+
+    itemCount = items.length;
+
+}
+
+
+function calculateInvoiceTotal() {
+
+    const items =
+        itemsSection.querySelectorAll(".item-box");
+
+    let subtotal = 0;
+
+
+    items.forEach(function(item) {
+
+        const quantity =
+            Number(
+                item.querySelector(
+                    ".product-quantity"
+                ).value
+            ) || 0;
+
+
+        const price =
+            Number(
+                item.querySelector(
+                    ".product-price"
+                ).value
+            ) || 0;
+
+
+        const itemTotal =
+            quantity * price;
+
+
+        subtotal += itemTotal;
+
+
+        item.querySelector(
+            ".item-total"
+        ).textContent =
+            "₦" +
+            itemTotal.toFixed(2);
+
+    });
+
+
+    const discount =
+        Number(
+            invoicePage.querySelector(
+                'input[placeholder="0"]'
+            ).value
+        ) || 0;
+
+
+    const total =
+        Math.max(
+            0,
+            subtotal - discount
+        );
+
+
+    const summary =
+        invoicePage.querySelector(".summary");
+
+
+    const rows =
+        summary.querySelectorAll(
+            ".summary-row"
+        );
+
+
+    rows[0].querySelector("strong")
+        .textContent =
+        "₦" + subtotal.toFixed(2);
+
+
+    rows[1].querySelector("strong")
+        .textContent =
+        "₦" + discount.toFixed(2);
+
+
+    rows[2].querySelector("strong")
+        .textContent =
+        "₦" + total.toFixed(2);
+
+
+    const paid =
+        Number(
+            invoicePage.querySelector(
+                'input[placeholder="Enter amount paid"]'
+            ).value
+        ) || 0;
+
+
+    const remaining =
+        Math.max(
+            0,
+            total - paid
+        );
+
+
+    rows[3].querySelector("strong")
+        .textContent =
+        "₦" + paid.toFixed(2);
+
+
+    rows[4].querySelector("strong")
+        .textContent =
+        "₦" + remaining.toFixed(2);
+
+}
+
+
+function addItem() {
+
+    itemCount++;
+
+
+    const item =
+        document.createElement("div");
+
+    item.className =
+        "item-box";
+
+
+    item.innerHTML = `
+
+        <div class="item-number">
+            Item ${itemCount}
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Product / Service
+            </label>
+
+            <input
+                type="text"
+                class="product-name"
+                placeholder="Enter item name">
+
+        </div>
+
+        <div class="two-fields">
+
+            <div class="form-group">
+
+                <label>
+                    Quantity
+                </label>
+
+                <input
+                    type="number"
+                    class="product-quantity"
+                    value="1"
+                    min="1">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+                    Price
+                </label>
+
+                <input
+                    type="number"
+                    class="product-price"
+                    value="0"
+                    min="0"
+                    placeholder="Enter price">
+
+            </div>
+
+        </div>
+
+        <strong>
+            Item Total:
+            <span class="item-total">
+                ₦0.00
+            </span>
+        </strong>
+
+        <button
+            type="button"
+            class="remove-item"
+            style="
+                width:100%;
+                margin-top:12px;
+                padding:12px;
+                border:none;
+                border-radius:10px;
+                background:#fee2e2;
+                color:#991b1b;
+                font-weight:bold;
+            ">
+
+            🗑️ Remove Item
+
+        </button>
+    `;
+
+
+    itemsSection.insertBefore(
+        item,
+        addItemButton
+    );
+
+
+    const quantity =
+        item.querySelector(
+            ".product-quantity"
+        );
+
+
+    const price =
+        item.querySelector(
+            ".product-price"
+        );
+
+
+    quantity.addEventListener(
+        "input",
+        calculateInvoiceTotal
+    );
+
+
+    price.addEventListener(
+        "input",
+        calculateInvoiceTotal
+    );
+
+
+    item.querySelector(
+        ".remove-item"
+    ).onclick =
+        function() {
+
+            item.remove();
+
+            updateItemNumbers();
+
+            calculateInvoiceTotal();
+
+        };
+
+
+    calculateInvoiceTotal();
+
+}
+
+
+addItemButton.onclick =
+    function() {
+
+        addItem();
+
+    };
+
+
+const existingItems =
+    itemsSection.querySelectorAll(
+        ".item-box"
+    );
+
+
+existingItems.forEach(function(item) {
+
+    const quantity =
+        item.querySelector(
+            ".product-quantity"
+        );
+
+
+    const price =
+        item.querySelector(
+            ".product-price"
+        );
+
+
+    quantity.classList.add(
+        "product-quantity"
+    );
+
+
+    price.classList.add(
+        "product-price"
+    );
+
+
+    quantity.addEventListener(
+        "input",
+        calculateInvoiceTotal
+    );
+
+
+    price.addEventListener(
+        "input",
+        calculateInvoiceTotal
+    );
+
+});
+
+
+const discountField =
+    invoicePage.querySelector(
+        'input[placeholder="0"]'
+    );
+
+
+const paidField =
+    invoicePage.querySelector(
+        'input[placeholder="Enter amount paid"]'
+    );
+
+
+discountField.addEventListener(
+    "input",
+    calculateInvoiceTotal
+);
+
+
+paidField.addEventListener(
+    "input",
+    calculateInvoiceTotal
+);
+
+
+updateItemNumbers();
+
+calculateInvoiceTotal();
+
+</script>
+
+<script>
+
+const invoicePage = pages[1];
+
+const itemsSection =
+    invoicePage.querySelector(".green-box");
+
+const addItemButton =
+    itemsSection.querySelector("button");
+
+let itemCount =
+    itemsSection.querySelectorAll(".item-box").length;
+
+
+function updateItemNumbers() {
+
+    const items =
+        itemsSection.querySelectorAll(".item-box");
+
+    items.forEach(function(item, index) {
+
+        const number =
+            item.querySelector(".item-number");
+
+        number.textContent =
+            "Item " + (index + 1);
+
+    });
+
+    itemCount = items.length;
+
+}
+
+
+function calculateInvoiceTotal() {
+
+    const items =
+        itemsSection.querySelectorAll(".item-box");
+
+    let subtotal = 0;
+
+
+    items.forEach(function(item) {
+
+        const quantity =
+            Number(
+                item.querySelector(
+                    ".product-quantity"
+                ).value
+            ) || 0;
+
+
+        const price =
+            Number(
+                item.querySelector(
+                    ".product-price"
+                ).value
+            ) || 0;
+
+
+        const itemTotal =
+            quantity * price;
+
+
+        subtotal += itemTotal;
+
+
+        item.querySelector(
+            ".item-total"
+        ).textContent =
+            "₦" +
+            itemTotal.toFixed(2);
+
+    });
+
+
+    const discount =
+        Number(
+            invoicePage.querySelector(
+                'input[placeholder="0"]'
+            ).value
+        ) || 0;
+
+
+    const total =
+        Math.max(
+            0,
+            subtotal - discount
+        );
+
+
+    const summary =
+        invoicePage.querySelector(".summary");
+
+
+    const rows =
+        summary.querySelectorAll(
+            ".summary-row"
+        );
+
+
+    rows[0].querySelector("strong")
+        .textContent =
+        "₦" + subtotal.toFixed(2);
+
+
+    rows[1].querySelector("strong")
+        .textContent =
+        "₦" + discount.toFixed(2);
+
+
+    rows[2].querySelector("strong")
+        .textContent =
+        "₦" + total.toFixed(2);
+
+
+    const paid =
+        Number(
+            invoicePage.querySelector(
+                'input[placeholder="Enter amount paid"]'
+            ).value
+        ) || 0;
+
+
+    const remaining =
+        Math.max(
+            0,
+            total - paid
+        );
+
+
+    rows[3].querySelector("strong")
+        .textContent =
+        "₦" + paid.toFixed(2);
+
+
+    rows[4].querySelector("strong")
+        .textContent =
+        "₦" + remaining.toFixed(2);
+
+}
+
+
+function addItem() {
+
+    itemCount++;
+
+
+    const item =
+        document.createElement("div");
+
+    item.className =
+        "item-box";
+
+
+    item.innerHTML = `
+
+        <div class="item-number">
+            Item ${itemCount}
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Product / Service
+            </label>
+
+            <input
+                type="text"
+                class="product-name"
+                placeholder="Enter item name">
+
+        </div>
+
+        <div class="two-fields">
+
+            <div class="form-group">
+
+                <label>
+                    Quantity
+                </label>
+
+                <input
+                    type="number"
+                    class="product-quantity"
+                    value="1"
+                    min="1">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+                    Price
+                </label>
+
+                <input
+                    type="number"
+                    class="product-price"
+                    value="0"
+                    min="0"
+                    placeholder="Enter price">
+
+            </div>
+
+        </div>
+
+        <strong>
+            Item Total:
+            <span class="item-total">
+                ₦0.00
+            </span>
+        </strong>
+
+        <button
+            type="button"
+            class="remove-item"
+            style="
+                width:100%;
+                margin-top:12px;
+                padding:12px;
+                border:none;
+                border-radius:10px;
+                background:#fee2e2;
+                color:#991b1b;
+                font-weight:bold;
+            ">
+
+            🗑️ Remove Item
+
+        </button>
+    `;
+
+
+    itemsSection.insertBefore(
+        item,
+        addItemButton
+    );
+
+
+    const quantity =
+        item.querySelector(
+            ".product-quantity"
+        );
+
+
+    const price =
+        item.querySelector(
+            ".product-price"
+        );
+
+
+    quantity.addEventListener(
+        "input",
+        calculateInvoiceTotal
+    );
+
+
+    price.addEventListener(
+        "input",
+        calculateInvoiceTotal
+    );
+
+
+    item.querySelector(
+        ".remove-item"
+    ).onclick =
+        function() {
+
+            item.remove();
+
+            updateItemNumbers();
+
+            calculateInvoiceTotal();
+
+        };
+
+
+    calculateInvoiceTotal();
+
+}
+
+
+addItemButton.onclick =
+    function() {
+
+        addItem();
+
+    };
+
+
+const existingItems =
+    itemsSection.querySelectorAll(
+        ".item-box"
+    );
+
+
+existingItems.forEach(function(item) {
+
+    const quantity =
+        item.querySelector(
+            ".product-quantity"
+        );
+
+
+    const price =
+        item.querySelector(
+            ".product-price"
+        );
+
+
+    quantity.classList.add(
+        "product-quantity"
+    );
+
+
+    price.classList.add(
+        "product-price"
+    );
+
+
+    quantity.addEventListener(
+        "input",
+        calculateInvoiceTotal
+    );
+
+
+    price.addEventListener(
+        "input",
+        calculateInvoiceTotal
+    );
+
+});
+
+
+const discountField =
+    invoicePage.querySelector(
+        'input[placeholder="0"]'
+    );
+
+
+const paidField =
+    invoicePage.querySelector(
+        'input[placeholder="Enter amount paid"]'
+    );
+
+
+discountField.addEventListener(
+    "input",
+    calculateInvoiceTotal
+);
+
+
+paidField.addEventListener(
+    "input",
+    calculateInvoiceTotal
+);
+
+
+updateItemNumbers();
+
+calculateInvoiceTotal();
+
+</script>
+<script>
+
+const customerPage = pages[2];
+
+const customerSearch =
+    customerPage.querySelector("input");
+
+
+/* =========================
+   CUSTOMER STORAGE
+========================= */
+
+function getCustomers() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "billoraCustomers"
+            )
+        ) || [];
+
+    } catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+function saveCustomers(customers) {
+
+    localStorage.setItem(
+        "billoraCustomers",
+        JSON.stringify(customers)
+    );
+
+}
+
+
+/* =========================
+   ADD CUSTOMER BOX
+========================= */
+
+const customerBox =
+    document.createElement("div");
+
+customerBox.className =
+    "box purple-box";
+
+customerBox.innerHTML = `
+
+    <div class="box-title">
+        👤 Add New Customer
+    </div>
+
+    <div class="form-group">
+
+        <label>
+            Customer Name
+        </label>
+
+        <input
+            type="text"
+            id="newCustomerName"
+            placeholder="Enter customer name">
+
+    </div>
+
+    <div class="form-group">
+
+        <label>
+            Customer Phone
+        </label>
+
+        <input
+            type="tel"
+            id="newCustomerPhone"
+            placeholder="Enter customer phone">
+
+    </div>
+
+    <div class="form-group">
+
+        <label>
+            Customer Email
+        </label>
+
+        <input
+            type="email"
+            id="newCustomerEmail"
+            placeholder="Enter customer email">
+
+    </div>
+
+    <button
+        type="button"
+        class="btn purple-btn"
+        id="saveCustomerButton">
+
+        💾 Save Customer
+
+    </button>
+
+`;
+
+
+customerPage.insertBefore(
+    customerBox,
+    customerPage.children[2]
+);
+
+
+/* =========================
+   SAVE CUSTOMER
+========================= */
+
+document
+    .getElementById(
+        "saveCustomerButton"
+    )
+    .onclick = function() {
+
+        const name =
+            document.getElementById(
+                "newCustomerName"
+            ).value.trim();
+
+
+        const phone =
+            document.getElementById(
+                "newCustomerPhone"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "newCustomerEmail"
+            ).value.trim();
+
+
+        if (!name) {
+
+            alert(
+                "Please enter the customer name."
+            );
+
+            return;
+
+        }
+
+
+        const customers =
+            getCustomers();
+
+
+        const alreadyExists =
+            customers.some(
+                function(customer) {
+
+                    return customer.name
+                        .toLowerCase()
+                        === name.toLowerCase();
+
+                }
+            );
+
+
+        if (alreadyExists) {
+
+            alert(
+                "This customer already exists."
+            );
+
+            return;
+
+        }
+
+
+        customers.push({
+
+            id: Date.now(),
+
+            name: name,
+
+            phone: phone,
+
+            email: email
+
+        });
+
+
+        saveCustomers(customers);
+
+
+        alert(
+            "Customer saved successfully!"
+        );
+
+
+        document.getElementById(
+            "newCustomerName"
+        ).value = "";
+
+
+        document.getElementById(
+            "newCustomerPhone"
+        ).value = "";
+
+
+        document.getElementById(
+            "newCustomerEmail"
+        ).value = "";
+
+
+        displayCustomers();
+
+    };
+
+
+/* =========================
+   DISPLAY CUSTOMERS
+========================= */
+
+function displayCustomers() {
+
+    const oldCards =
+        customerPage.querySelectorAll(
+            ".customer-card"
+        );
+
+
+    oldCards.forEach(
+        function(card) {
+
+            card.remove();
+
+        }
+    );
+
+
+    const customers =
+        getCustomers();
+
+
+    const invoices =
+        getInvoicesSafely();
+
+
+    const search =
+        customerSearch.value
+            .toLowerCase()
+            .trim();
+
+
+    const filtered =
+        customers.filter(
+            function(customer) {
+
+                return (
+                    !search ||
+                    customer.name
+                        .toLowerCase()
+                        .includes(search)
+                );
+
+            }
+        );
+
+
+    if (filtered.length === 0) {
+
+        const empty =
+            document.createElement(
+                "div"
+            );
+
+        empty.className =
+            "customer-card";
+
+
+        empty.innerHTML = `
+
+            <div class="empty">
+
+                No saved customers yet.
+
+            </div>
+
+        `;
+
+
+        customerPage.appendChild(
+            empty
+        );
+
+        return;
+
+    }
+
+
+    filtered.forEach(
+        function(customer) {
+
+            const customerInvoices =
+                invoices.filter(
+                    function(invoice) {
+
+                        return invoice.customer
+                            .toLowerCase()
+                            === customer.name
+                                .toLowerCase();
+
+                    }
+                );
+
+
+            let total = 0;
+
+            let paid = 0;
+
+            let balance = 0;
+
+
+            customerInvoices.forEach(
+                function(invoice) {
+
+                    total +=
+                        Number(invoice.total) || 0;
+
+                    paid +=
+                        Number(invoice.paid) || 0;
+
+                    balance +=
+                        Number(invoice.balance) || 0;
+
+                }
+            );
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "customer-card";
+
+
+            card.innerHTML = `
+
+                <h3>
+                    👤 ${customer.name}
+                </h3>
+
+                <p>
+                    📞 ${
+                        customer.phone ||
+                        "No phone number"
+                    }
+                </p>
+
+                <p>
+                    ✉️ ${
+                        customer.email ||
+                        "No email"
+                    }
+                </p>
+
+                <br>
+
+                <p>
+                    Total Invoices:
+                    <strong>
+                        ${customerInvoices.length}
+                    </strong>
+                </p>
+
+                <p>
+                    Total Invoice:
+                    <strong>
+                        ₦${total.toFixed(2)}
+                    </strong>
+                </p>
+
+                <p>
+                    Total Paid:
+                    <strong>
+                        ₦${paid.toFixed(2)}
+                    </strong>
+                </p>
+
+                <p>
+                    Remaining Balance:
+                    <strong style="color:#dc2626;">
+                        ₦${balance.toFixed(2)}
+                    </strong>
+                </p>
+
+                <br>
+
+                <strong>
+                    🧾 Customer Invoice History
+                </strong>
+
+            `;
+
+
+            if (
+                customerInvoices.length === 0
+            ) {
+
+                const noInvoice =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                noInvoice.className =
+                    "invoice-card";
+
+
+                noInvoice.textContent =
+                    "No invoice for this customer yet.";
+
+
+                card.appendChild(
+                    noInvoice
+                );
+
+            }
+
+
+            customerInvoices.forEach(
+                function(invoice) {
+
+                    const invoiceCard =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    invoiceCard.className =
+                        "invoice-card";
+
+
+                    invoiceCard.innerHTML = `
+
+                        <strong>
+                            ${invoice.number}
+                        </strong>
+
+                        <p>
+                            Total:
+                            ₦${Number(
+                                invoice.total
+                            ).toFixed(2)}
+                        </p>
+
+                        <p>
+                            Paid:
+                            ₦${Number(
+                                invoice.paid
+                            ).toFixed(2)}
+                        </p>
+
+                        <p>
+                            Remaining:
+                            ₦${Number(
+                                invoice.balance
+                            ).toFixed(2)}
+                        </p>
+
+                        <br>
+
+                        <span class="status ${
+                            invoice.status === "Paid"
+                            ? "paid"
+                            : invoice.status === "Partially Paid"
+                            ? "partial"
+                            : "unpaid"
+                        }">
+
+                            ${invoice.status}
+
+                        </span>
+
+                    `;
+
+
+                    card.appendChild(
+                        invoiceCard
+                    );
+
+                }
+            );
+
+
+            customerPage.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   SAFE INVOICE READER
+========================= */
+
+function getInvoicesSafely() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "billoraInvoices"
+            )
+        ) || [];
+
+    } catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+customerSearch.addEventListener(
+    "input",
+    displayCustomers
+);
+
+
+displayCustomers();
+
+
+</script>
+<script>
+
+/* =========================
+   SAVED CUSTOMER SELECTOR
+========================= */
+
+const invoiceCustomerBox =
+    invoicePage.querySelector(".purple-box");
+
+const customerNameInput =
+    invoicePage.querySelector(
+        'input[placeholder="Enter customer name"]'
+    );
+
+
+const savedCustomerGroup =
+    document.createElement("div");
+
+savedCustomerGroup.className =
+    "form-group";
+
+
+savedCustomerGroup.innerHTML = `
+
+    <label>
+        Select Saved Customer
+    </label>
+
+    <select id="savedCustomerSelect">
+
+        <option value="">
+            -- Select a saved customer --
+        </option>
+
+    </select>
+
+`;
+
+
+invoiceCustomerBox.insertBefore(
+    savedCustomerGroup,
+    customerNameInput.parentElement
+);
+
+
+const savedCustomerSelect =
+    document.getElementById(
+        "savedCustomerSelect"
+    );
+
+
+function loadSavedCustomers() {
+
+    const customers =
+        getCustomers();
+
+
+    savedCustomerSelect.innerHTML = `
+
+        <option value="">
+            -- Select a saved customer --
+        </option>
+
+    `;
+
+
+    customers.forEach(
+        function(customer) {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                customer.id;
+
+
+            option.textContent =
+                customer.name;
+
+
+            savedCustomerSelect.appendChild(
+                option
+            );
+
+        }
+    );
+
+}
+
+
+savedCustomerSelect.addEventListener(
+    "change",
+    function() {
+
+        const customerId =
+            Number(
+                savedCustomerSelect.value
+            );
+
+
+        if (!customerId) {
+
+            return;
+
+        }
+
+
+        const customers =
+            getCustomers();
+
+
+        const customer =
+            customers.find(
+                function(item) {
+
+                    return item.id === customerId;
+
+                }
+            );
+
+
+        if (!customer) {
+
+            return;
+
+        }
+
+
+        customerNameInput.value =
+            customer.name;
+
+
+        const phoneInput =
+            invoicePage.querySelector(
+                'input[placeholder="Enter customer phone"]'
+            );
+
+
+        if (phoneInput) {
+
+            phoneInput.value =
+                customer.phone || "";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   AUTOMATIC INVOICE NUMBER
+========================= */
+
+function getNextInvoiceNumber() {
+
+    const invoices =
+        getInvoicesSafely();
+
+
+    let highestNumber = 0;
+
+
+    invoices.forEach(
+        function(invoice) {
+
+            const match =
+                String(
+                    invoice.number || ""
+                ).match(
+                    /INV-(\d+)/
+                );
+
+
+            if (match) {
+
+                const number =
+                    Number(match[1]);
+
+
+                if (
+                    number > highestNumber
+                ) {
+
+                    highestNumber =
+                        number;
+
+                }
+
+            }
+
+        }
+    );
+
+
+    return "INV-" +
+        String(
+            highestNumber + 1
+        ).padStart(4, "0");
+
+}
+
+
+function setAutomaticInvoiceNumber() {
+
+    const invoiceNumberInput =
+        invoicePage.querySelector(
+            'input[placeholder="INV-0001"]'
+        );
+
+
+    if (!invoiceNumberInput) {
+
+        return;
+
+    }
+
+
+    invoiceNumberInput.value =
+        getNextInvoiceNumber();
+
+
+    invoiceNumberInput.readOnly =
+        true;
+
+
+    invoiceNumberInput.style.background =
+        "#f1f5f9";
+
+
+    invoiceNumberInput.style.color =
+        "#475569";
+
+}
+
+
+loadSavedCustomers();
+
+setAutomaticInvoiceNumber();
+
+</script>
+
+<script>
+
+/* =========================
+   SAVE INVOICE
+========================= */
+
+const saveButton =
+    invoicePage.querySelector(
+        ".dark-box .green-btn"
+    );
+
+
+saveButton.onclick = function () {
+
+    const customerName =
+        customerNameInput.value.trim();
+
+
+    if (!customerName) {
+
+        alert(
+            "Please select or enter a customer."
+        );
+
+        return;
+
+    }
+
+
+    const items =
+        itemsSection.querySelectorAll(
+            ".item-box"
+        );
+
+
+    const invoiceItems = [];
+
+
+    items.forEach(function (item) {
+
+        const name =
+            item.querySelector(
+                ".product-name"
+            ).value.trim();
+
+
+        const quantity =
+            Number(
+                item.querySelector(
+                    ".product-quantity"
+                ).value
+            ) || 0;
+
+
+        const price =
+            Number(
+                item.querySelector(
+                    ".product-price"
+                ).value
+            ) || 0;
+
+
+        if (name && quantity > 0) {
+
+            invoiceItems.push({
+
+                name: name,
+
+                quantity: quantity,
+
+                price: price,
+
+                total: quantity * price
+
+            });
+
+        }
+
+    });
+
+
+    if (invoiceItems.length === 0) {
+
+        alert(
+            "Please add at least one item."
+        );
+
+        return;
+
+    }
+
+
+    calculateInvoiceTotal();
+
+
+    const summaryRows =
+        invoicePage.querySelectorAll(
+            ".summary-row"
+        );
+
+
+    const totalText =
+        summaryRows[2]
+            .querySelector("strong")
+            .textContent;
+
+
+    const paidText =
+        summaryRows[3]
+            .querySelector("strong")
+            .textContent;
+
+
+    const remainingText =
+        summaryRows[4]
+            .querySelector("strong")
+            .textContent;
+
+
+    const total =
+        Number(
+            totalText.replace(
+                /[^0-9.-]/g,
+                ""
+            )
+        ) || 0;
+
+
+    const paid =
+        Number(
+            paidText.replace(
+                /[^0-9.-]/g,
+                ""
+            )
+        ) || 0;
+
+
+    const remaining =
+        Number(
+            remainingText.replace(
+                /[^0-9.-]/g,
+                ""
+            )
+        ) || 0;
+
+
+    let status = "Unpaid";
+
+
+    if (total > 0 && paid >= total) {
+
+        status = "Paid";
+
+    } else if (paid > 0) {
+
+        status = "Partially Paid";
+
+    }
+
+
+    const invoices =
+        getInvoicesSafely();
+
+
+    const invoice = {
+
+        id: Date.now(),
+
+        number:
+            invoicePage.querySelector(
+                'input[placeholder="INV-0001"]'
+            ).value,
+
+        date:
+            invoicePage.querySelector(
+                'input[type="date"]'
+            ).value,
+
+        customer:
+            customerName,
+
+        phone:
+            invoicePage.querySelector(
+                'input[placeholder="Enter customer phone"]'
+            ).value.trim(),
+
+        currency:
+            currencySelect.value,
+
+        items:
+            invoiceItems,
+
+        total:
+            total,
+
+        paid:
+            paid,
+
+        balance:
+            remaining,
+
+        paymentMethod:
+            paymentSelect.value,
+
+        status:
+            status
+
+    };
+
+
+    invoices.push(invoice);
+
+    localStorage.setItem(
+        "billoraInvoices",
+        JSON.stringify(invoices)
+    );
+
+
+    alert(
+        "Invoice saved successfully!"
+    );
+
+
+    displaySavedInvoices();
+
+    setAutomaticInvoiceNumber();
+
+};
+
+
+/* =========================
+   DISPLAY SAVED INVOICES
+========================= */
+
+function displaySavedInvoices() {
+
+    const historyBox =
+        invoicePage.querySelector(
+            ".pink-box"
+        );
+
+
+    const oldCards =
+        historyBox.querySelectorAll(
+            ".invoice-card"
+        );
+
+
+    oldCards.forEach(function (card) {
+
+        card.remove();
+
+    });
+
+
+    const invoices =
+        getInvoicesSafely();
+
+
+    if (invoices.length === 0) {
+
+        const empty =
+            document.createElement(
+                "div"
+            );
+
+
+        empty.className =
+            "invoice-card";
+
+
+        empty.textContent =
+            "No saved invoices yet.";
+
+
+        historyBox.appendChild(
+            empty
+        );
+
+
+        return;
+
+    }
+
+
+    invoices
+        .slice()
+        .reverse()
+        .forEach(function (invoice) {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "invoice-card";
+
+
+            let statusClass =
+                "unpaid";
+
+
+            if (invoice.status === "Paid") {
+
+                statusClass = "paid";
+
+            } else if (
+                invoice.status ===
+                "Partially Paid"
+            ) {
+
+                statusClass = "partial";
+
+            }
+
+
+            card.innerHTML = `
+
+                <strong>
+                    🧾 ${invoice.number}
+                </strong>
+
+                <p>
+                    Customer:
+                    ${invoice.customer}
+                </p>
+
+                <p>
+                    Total:
+                    ${invoice.currency}
+                    ${Number(invoice.total).toFixed(2)}
+                </p>
+
+                <p>
+                    Paid:
+                    ${invoice.currency}
+                    ${Number(invoice.paid).toFixed(2)}
+                </p>
+
+                <p>
+                    Remaining:
+                    ${invoice.currency}
+                    ${Number(invoice.balance).toFixed(2)}
+                </p>
+
+                <p>
+                    Payment:
+                    ${invoice.paymentMethod}
+                </p>
+
+                <br>
+
+                <span class="status ${statusClass}">
+                    ${invoice.status}
+                </span>
+
+            `;
+
+
+            historyBox.appendChild(
+                card
+            );
+
+        });
+
+}
+
+
+displaySavedInvoices();
+
+</script>
+<script>
+
+/* =========================
+   CUSTOMER INVOICE HISTORY
+========================= */
+
+function showCustomerHistory(customerName) {
+
+    const invoices =
+        getInvoicesSafely();
+
+    const customerInvoices =
+        invoices.filter(function(invoice) {
+
+            return invoice.customer
+                .toLowerCase()
+                === customerName
+                    .toLowerCase();
+
+        });
+
+
+    let total = 0;
+    let paid = 0;
+    let balance = 0;
+
+
+    customerInvoices.forEach(
+        function(invoice) {
+
+            total +=
+                Number(invoice.total) || 0;
+
+            paid +=
+                Number(invoice.paid) || 0;
+
+            balance +=
+                Number(invoice.balance) || 0;
+
+        }
+    );
+
+
+    return {
+
+        invoices:
+            customerInvoices,
+
+        total:
+            total,
+
+        paid:
+            paid,
+
+        balance:
+            balance
+
+    };
+
+}
+
+
+/* =========================
+   UPDATE DASHBOARD
+========================= */
+
+function updateDashboardTotals() {
+
+    const invoices =
+        getInvoicesSafely();
+
+
+    let total = 0;
+    let paid = 0;
+    let balance = 0;
+
+
+    invoices.forEach(function(invoice) {
+
+        total +=
+            Number(invoice.total) || 0;
+
+        paid +=
+            Number(invoice.paid) || 0;
+
+        balance +=
+            Number(invoice.balance) || 0;
+
+    });
+
+
+    const dashboard =
+        pages[0];
+
+
+    const cards =
+        dashboard.querySelectorAll(
+            ".stat-card strong"
+        );
+
+
+    if (cards.length >= 4) {
+
+        cards[0].textContent =
+            "₦" + total.toFixed(2);
+
+
+        cards[1].textContent =
+            "₦" + paid.toFixed(2);
+
+
+        cards[2].textContent =
+            "₦" + balance.toFixed(2);
+
+
+        const customers =
+            getCustomers();
+
+
+        cards[3].textContent =
+            customers.length;
+
+    }
+
+}
+
+
+/* =========================
+   UPDATE REPORTS
+========================= */
+
+function updateReportsTotals() {
+
+    const invoices =
+        getInvoicesSafely();
+
+
+    let total = 0;
+    let paid = 0;
+    let balance = 0;
+
+
+    invoices.forEach(function(invoice) {
+
+        total +=
+            Number(invoice.total) || 0;
+
+        paid +=
+            Number(invoice.paid) || 0;
+
+        balance +=
+            Number(invoice.balance) || 0;
+
+    });
+
+
+    const reportPage =
+        pages[3];
+
+
+    const cards =
+        reportPage.querySelectorAll(
+            ".stat-card strong"
+        );
+
+
+    if (cards.length >= 4) {
+
+        cards[0].textContent =
+            "₦" + total.toFixed(2);
+
+
+        cards[1].textContent =
+            "₦" + paid.toFixed(2);
+
+
+        cards[2].textContent =
+            "₦" + balance.toFixed(2);
+
+
+        cards[3].textContent =
+            invoices.length;
+
+    }
+
+}
+
+
+/* =========================
+   REFRESH EVERYTHING
+========================= */
+
+function refreshBillora() {
+
+    displaySavedInvoices();
+
+    displayCustomers();
+
+    updateDashboardTotals();
+
+    updateReportsTotals();
+
+}
+
+
+/* =========================
+   RUN
+========================= */
+
+refreshBillora();
+
+</script>
+
+<script>
+
+/* =========================
+   FIX PAYMENT SECTION
+========================= */
+
+const paymentBox =
+    invoicePage.querySelector(".cyan-box");
+
+
+if (paymentBox) {
+
+    paymentBox.innerHTML = `
+
+        <div class="box-title">
+            💳 Payment Information
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Discount
+            </label>
+
+            <input
+                type="number"
+                id="invoiceDiscount"
+                value="0"
+                min="0"
+                placeholder="Enter discount">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Amount Paid
+            </label>
+
+            <input
+                type="number"
+                id="invoiceAmountPaid"
+                value="0"
+                min="0"
+                placeholder="Enter amount paid">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Payment Method
+            </label>
+
+            <select id="invoicePaymentMethod">
+
+                <option value="Cash">
+                    Cash
+                </option>
+
+                <option value="Bank Transfer">
+                    Bank Transfer
+                </option>
+
+                <option value="POS">
+                    POS
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================
+   CONNECT PAYMENT FIELDS
+========================= */
+
+const newDiscount =
+    document.getElementById(
+        "invoiceDiscount"
+    );
+
+
+const newAmountPaid =
+    document.getElementById(
+        "invoiceAmountPaid"
+    );
+
+
+const newPaymentMethod =
+    document.getElementById(
+        "invoicePaymentMethod"
+    );
+
+
+
+
+    const items =
+        itemsSection.querySelectorAll(
+            ".item-box"
+        );
+
+
+    let subtotal = 0;
+
+
+    items.forEach(function(item) {
+
+        const quantity =
+            Number(
+                item.querySelector(
+                    ".product-quantity"
+                ).value
+            ) || 0;
+
+
+        const price =
+            Number(
+                item.querySelector(
+                    ".product-price"
+                ).value
+            ) || 0;
+
+
+        subtotal +=
+            quantity * price;
+
+    });
+
+
+    const discount =
+        Math.max(
+            0,
+            Number(
+                newDiscount.value
+            ) || 0
+        );
+
+
+    const total =
+        Math.max(
+            0,
+            subtotal - discount
+        );
+
+
+    let paid =
+        Math.max(
+            0,
+            Number(
+                newAmountPaid.value
+            ) || 0
+        );
+
+
+    if (paid > total) {
+
+        paid = total;
+
+        newAmountPaid.value =
+            total;
+
+    }
+
+
+    const remaining =
+        Math.max(
+            0,
+            total - paid
+        );
+
+
+    let status =
+        "Unpaid";
+
+
+    if (
+        total > 0 &&
+        paid >= total
+    ) {
+
+        status = "Paid";
+
+    }
+    else if (paid > 0) {
+
+        status =
+            "Partially Paid";
+
+    }
+
+
+    const rows =
+        invoicePage.querySelectorAll(
+            ".summary-row"
+        );
+
+
+    rows[0]
+        .querySelector("strong")
+        .textContent =
+        "₦" +
+        subtotal.toFixed(2);
+
+
+    rows[1]
+        .querySelector("strong")
+        .textContent =
+        "₦" +
+        discount.toFixed(2);
+
+
+    rows[2]
+        .querySelector("strong")
+        .textContent =
+        "₦" +
+        total.toFixed(2);
+
+
+    rows[3]
+        .querySelector("strong")
+        .textContent =
+        "₦" +
+        paid.toFixed(2);
+
+
+    rows[4]
+        .querySelector("strong")
+        .textContent =
+        "₦" +
+        remaining.toFixed(2);
+
+
+    const statusElement =
+        rows[5].querySelector(
+            ".status"
+        );
+
+
+    statusElement.textContent =
+        status;
+
+
+    statusElement.className =
+        "status " +
+        (
+            status === "Paid"
+            ? "paid"
+            : status === "Partially Paid"
+            ? "partial"
+            : "unpaid"
+        );
+
+
+return {
+    subtotal: subtotal,
+    discount: discount,
+    total: total,
+    paid: paid,
+    balance: balance,
+    status: status
+};
+
+        
+          
+
+        
+            
+
+        
+            
+
+        
+          
+
+      
+          
+
+        
+          
+
+
+
+
+newDiscount.addEventListener(
+    "input",
+    calculatePayment
+);
+
+
+newAmountPaid.addEventListener(
+    "input",
+    calculatePayment
+);
+
+
+/* =========================
+   SAVE / DONE BUTTON
+========================= */
+
+const actionBox =
+    invoicePage.querySelector(
+        ".dark-box"
+    );
+
+
+const oldSave =
+    actionBox.querySelector(
+        ".green-btn"
+    );
+
+
+oldSave.textContent =
+    "💾 Save Invoice";
+
+
+oldSave.style.display =
+    "block";
+
+
+oldSave.onclick =
+    function() {
+
+        const customer =
+            customerNameInput.value.trim();
+
+
+        if (!customer) {
+
+            alert(
+                "Please select or enter a customer first."
+            );
+
+            return;
+
+        }
+
+
+        const calculation =
+            calculatePayment();
+
+
+        if (
+            calculation.total <= 0
+        ) {
+
+            alert(
+                "Please add an item and enter its price."
+            );
+
+            return;
+
+        }
+
+
+        const items =
+            [];
+
+
+        itemsSection
+            .querySelectorAll(
+                ".item-box"
+            )
+            .forEach(function(item) {
+
+                const name =
+                    item.querySelector(
+                        ".product-name"
+                    ).value.trim();
+
+
+                const quantity =
+                    Number(
+                        item.querySelector(
+                            ".product-quantity"
+                        ).value
+                    ) || 0;
+
+
+                const price =
+                    Number(
+                        item.querySelector(
+                            ".product-price"
+                        ).value
+                    ) || 0;
+
+
+                if (name) {
+
+                    items.push({
+
+                        name:
+                            name,
+
+                        quantity:
+                            quantity,
+
+                        price:
+                            price,
+
+                        total:
+                            quantity * price
+
+                    });
+
+                }
+
+            });
+
+
+        const invoices =
+            getInvoicesSafely();
+
+
+        const invoice = {
+
+            id:
+                Date.now(),
+
+            number:
+                invoiceNumber.value,
+
+            date:
+                invoiceDate.value,
+
+            customer:
+                customer,
+
+            phone:
+                customerPhone.value,
+
+            items:
+                items,
+
+            subtotal:
+                calculation.subtotal,
+
+            discount:
+                calculation.discount,
+
+            total:
+                calculation.total,
+
+            paid:
+                calculation.paid,
+
+            balance:
+                calculation.remaining,
+
+            paymentMethod:
+                newPaymentMethod.value,
+
+            status:
+                calculation.status
+
+        };
+
+
+        invoices.push(
+            invoice
+        );
+
+
+        localStorage.setItem(
+            "billoraInvoices",
+            JSON.stringify(
+                invoices
+            )
+        );
+
+
+        alert(
+            "Invoice saved successfully!"
+        );
+
+
+        setAutomaticInvoiceNumber();
+
+        displaySavedInvoices();
+
+        displayCustomers();
+
+        updateDashboardTotals();
+
+        updateReportsTotals();
+
+    };
+
+
+calculatePayment();
+
+</script>
+<script>
+
+/* =========================
+   PDF / PRINT INVOICE
+========================= */
+
+function printInvoice(invoice) {
+
+    if (!invoice) {
+
+        alert("Invoice not found.");
+
+        return;
+
+    }
+
+
+    const symbol =
+        currencySymbols[invoice.currency] || "₦";
+
+
+    let itemsHTML = "";
+
+
+    invoice.items.forEach(function(item) {
+
+        itemsHTML += `
+
+            <tr>
+
+                <td>
+                    ${item.name}
+                </td>
+
+                <td>
+                    ${item.quantity}
+                </td>
+
+                <td>
+                    ${symbol}${Number(
+                        item.price
+                    ).toFixed(2)}
+                </td>
+
+                <td>
+                    ${symbol}${Number(
+                        item.total
+                    ).toFixed(2)}
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    const printWindow =
+        window.open(
+            "",
+            "_blank"
+        );
+
+
+    if (!printWindow) {
+
+        alert(
+            "Please allow pop-ups in your browser."
+        );
+
+        return;
+
+    }
+
+
+    printWindow.document.write(`
+
+        <!DOCTYPE html>
+
+        <html>
+
+        <head>
+
+            <title>
+                ${invoice.number}
+            </title>
+
+            <style>
+
+                body {
+
+                    font-family:
+                        Arial,
+                        sans-serif;
+
+                    padding:
+                        30px;
+
+                    color:
+                        #172033;
+
+                }
+
+                .invoice {
+
+                    max-width:
+                        800px;
+
+                    margin:
+                        auto;
+
+                }
+
+                h1 {
+
+                    color:
+                        #2563eb;
+
+                    margin-bottom:
+                        5px;
+
+                }
+
+                .top {
+
+                    display:
+                        flex;
+
+                    justify-content:
+                        space-between;
+
+                    margin-bottom:
+                        30px;
+
+                }
+
+                table {
+
+                    width:
+                        100%;
+
+                    border-collapse:
+                        collapse;
+
+                    margin-top:
+                        25px;
+
+                }
+
+                th,
+                td {
+
+                    border:
+                        1px solid #ddd;
+
+                    padding:
+                        10px;
+
+                    text-align:
+                        left;
+
+                }
+
+                th {
+
+                    background:
+                        #eff6ff;
+
+                }
+
+                .summary {
+
+                    margin-top:
+                        25px;
+
+                    margin-left:
+                        auto;
+
+                    max-width:
+                        350px;
+
+                }
+
+                .row {
+
+                    display:
+                        flex;
+
+                    justify-content:
+                        space-between;
+
+                    padding:
+                        8px;
+
+                    border-bottom:
+                        1px solid #eee;
+
+                }
+
+                .balance {
+
+                    font-size:
+                        20px;
+
+                    font-weight:
+                        bold;
+
+                }
+
+                .status {
+
+                    display:
+                        inline-block;
+
+                    padding:
+                        8px 14px;
+
+                    border-radius:
+                        20px;
+
+                    font-weight:
+                        bold;
+
+                    margin-top:
+                        15px;
+
+                }
+
+                .paid {
+
+                    background:
+                        #dcfce7;
+
+                    color:
+                        #166534;
+
+                }
+
+                .partial {
+
+                    background:
+                        #fef3c7;
+
+                    color:
+                        #92400e;
+
+                }
+
+                .unpaid {
+
+                    background:
+                        #fee2e2;
+
+                    color:
+                        #991b1b;
+
+                }
+
+                @media print {
+
+                    body {
+
+                        padding:
+                            0;
+
+                    }
+
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            <div class="invoice">
+
+                <h1>
+                    Billora
+                </h1>
+
+                <p>
+                    Smart Billing
+                </p>
+
+                <div class="top">
+
+                    <div>
+
+                        <strong>
+                            Bill To
+                        </strong>
+
+                        <p>
+                            ${invoice.customer}
+                        </p>
+
+                        <p>
+                            ${invoice.phone || ""}
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Invoice
+                        </strong>
+
+                        <p>
+                            ${invoice.number}
+                        </p>
+
+                        <p>
+                            ${invoice.date}
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Item
+                            </th>
+
+                            <th>
+                                Qty
+                            </th>
+
+                            <th>
+                                Price
+                            </th>
+
+                            <th>
+                                Total
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${itemsHTML}
+
+                    </tbody>
+
+                </table>
+
+
+                <div class="summary">
+
+                    <div class="row">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <strong>
+                            ${symbol}${Number(
+                                invoice.subtotal
+                            ).toFixed(2)}
+                        </strong>
+
+                    </div>
+
+                    <div class="row">
+
+                        <span>
+                            Discount
+                        </span>
+
+                        <strong>
+                            ${symbol}${Number(
+                                invoice.discount
+                            ).toFixed(2)}
+                        </strong>
+
+                    </div>
+
+                    <div class="row">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong>
+                            ${symbol}${Number(
+                                invoice.total
+                            ).toFixed(2)}
+                        </strong>
+
+                    </div>
+
+                    <div class="row">
+
+                        <span>
+                            Amount Paid
+                        </span>
+
+                        <strong>
+                            ${symbol}${Number(
+                                invoice.paid
+                            ).toFixed(2)}
+                        </strong>
+
+                    </div>
+
+                    <div class="row balance">
+
+                        <span>
+                            Balance
+                        </span>
+
+                        <strong>
+                            ${symbol}${Number(
+                                invoice.balance
+                            ).toFixed(2)}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <p>
+
+                    <strong>
+                        Payment Method:
+                    </strong>
+
+                    ${invoice.paymentMethod}
+
+                </p>
+
+
+                <span class="status ${
+                    invoice.status === "Paid"
+                    ? "paid"
+                    : invoice.status === "Partially Paid"
+                    ? "partial"
+                    : "unpaid"
+                }">
+
+                    ${invoice.status}
+
+                </span>
+
+
+                <p style="
+                    margin-top:40px;
+                    text-align:center;
+                ">
+
+                    Thank you for your business.
+
+                </p>
+
+            </div>
+
+            <script>
+
+                window.onload =
+                    function() {
+
+                        window.print();
+
+                    };
+
+            <\/script>
+
+        </body>
+
+        </html>
+
+    `);
+
+
+    printWindow.document.close();
+
+}
+
+
+/* =========================
+   CONNECT PDF BUTTON
+========================= */
+
+function connectPDFButtons() {
+
+    const pdfButtons =
+        invoicePage.querySelectorAll(
+            "button"
+        );
+
+
+    pdfButtons.forEach(
+        function(button) {
+
+            const text =
+                button.textContent
+                    .toLowerCase();
+
+
+            if (
+                text.includes("pdf") ||
+                text.includes("print")
+            ) {
+
+                button.onclick =
+                    function() {
+
+                        const invoices =
+                            getInvoicesSafely();
+
+
+                        if (
+                            invoices.length === 0
+                        ) {
+
+                            alert(
+                                "Please save an invoice first."
+                            );
+
+                            return;
+
+                        }
+
+
+                        const latestInvoice =
+                            invoices[
+                                invoices.length - 1
+                            ];
+
+
+                        printInvoice(
+                            latestInvoice
+                        );
+
+                    };
+
+            }
+
+        }
+    );
+
+}
+
+
+connectPDFButtons();
+
+</script>
+<script>
+
+/* =========================
+   CREATE & SAVE INVOICE BUTTON
+========================= */
+
+const invoiceActionArea =
+    invoicePage.querySelector(".dark-box");
+
+
+if (invoiceActionArea) {
+
+    const submitInvoiceButton =
+        document.createElement("button");
+
+
+    submitInvoiceButton.type =
+        "button";
+
+
+    submitInvoiceButton.id =
+        "createSaveInvoice";
+
+
+    submitInvoiceButton.innerHTML =
+        "🧾 CREATE & SAVE INVOICE";
+
+
+    submitInvoiceButton.style.width =
+        "100%";
+
+
+    submitInvoiceButton.style.padding =
+        "16px";
+
+
+    submitInvoiceButton.style.marginTop =
+        "15px";
+
+
+    submitInvoiceButton.style.border =
+        "none";
+
+
+    submitInvoiceButton.style.borderRadius =
+        "12px";
+
+
+    submitInvoiceButton.style.background =
+        "linear-gradient(135deg,#2563eb,#0891b2)";
+
+
+    submitInvoiceButton.style.color =
+        "white";
+
+
+    submitInvoiceButton.style.fontSize =
+        "16px";
+
+
+    submitInvoiceButton.style.fontWeight =
+        "bold";
+
+
+    submitInvoiceButton.style.boxShadow =
+        "0 6px 18px rgba(37,99,235,.25)";
+
+
+    invoiceActionArea.appendChild(
+        submitInvoiceButton
+    );
+
+
+    submitInvoiceButton.onclick =
+        function() {
+
+            const customer =
+                customerNameInput.value.trim();
+
+
+            if (!customer) {
+
+                alert(
+                    "Please select the customer first."
+                );
+
+                return;
+
+            }
+
+
+            const items =
+                itemsSection.querySelectorAll(
+                    ".item-box"
+                );
+
+
+            let hasItem = false;
+
+
+            items.forEach(
+                function(item) {
+
+                    const name =
+                        item.querySelector(
+                            ".product-name"
+                        ).value.trim();
+
+
+                    const price =
+                        Number(
+                            item.querySelector(
+                                ".product-price"
+                            ).value
+                        ) || 0;
+
+
+                    if (
+                        name &&
+                        price > 0
+                    ) {
+
+                        hasItem = true;
+
+                    }
+
+                }
+            );
+
+
+            if (!hasItem) {
+
+                alert(
+                    "Please add a product or service with a price."
+                );
+
+                return;
+
+            }
+
+
+            const confirmation =
+                confirm(
+
+                    "Create and save this invoice for " +
+                    customer +
+                    "?"
+
+                );
+
+
+            if (!confirmation) {
+
+                return;
+
+            }
+
+
+            const oldSaveButton =
+                invoiceActionArea.querySelector(
+                    ".green-btn"
+                );
+
+
+            if (oldSaveButton) {
+
+                oldSaveButton.click();
+
+            } else {
+
+                alert(
+                    "Invoice save function is not connected."
+                );
+
+            }
+
+        };
+
+}
+
+</script>
+<script>
+
+/* =========================
+   COMPLETE ORDER CALCULATION
+========================= */
+
+
+
+    const items =
+        itemsSection.querySelectorAll(".item-box");
+
+    let subtotal = 0;
+
+    items.forEach(function(item) {
+
+        const quantity =
+            Number(
+                item.querySelector(
+                    ".product-quantity"
+                ).value
+            ) || 0;
+
+        const price =
+            Number(
+                item.querySelector(
+                    ".product-price"
+                ).value
+            ) || 0;
+
+        const itemTotal =
+            quantity * price;
+
+        subtotal += itemTotal;
+
+        const itemTotalBox =
+            item.querySelector(".item-total");
+
+        if (itemTotalBox) {
+
+            itemTotalBox.textContent =
+                "₦" + itemTotal.toFixed(2);
+
+        }
+
+    });
+
+
+    const discount =
+        Number(
+            document.getElementById(
+                "invoiceDiscount"
+            )?.value
+        ) || 0;
+
+
+    const validDiscount =
+        Math.min(
+            discount,
+            subtotal
+        );
+
+
+    const total =
+        Math.max(
+            0,
+            subtotal - validDiscount
+        );
+
+
+    const paid =
+        Math.min(
+            total,
+            Math.max(
+                0,
+                Number(
+                    document.getElementById(
+                        "invoiceAmountPaid"
+                    )?.value
+                ) || 0
+            )
+        );
+
+
+    const balance =
+        Math.max(
+            0,
+            total - paid
+        );
+
+
+    let status = "Unpaid";
+
+
+    if (
+        total > 0 &&
+        paid === total
+    ) {
+
+        status = "Paid";
+
+    } else if (paid > 0) {
+
+        status = "Partially Paid";
+
+    }
+
+
+    const rows =
+        invoicePage.querySelectorAll(
+            ".summary-row"
+        );
+
+
+    if (rows.length >= 6) {
+
+        rows[0]
+            .querySelector("strong")
+            .textContent =
+            "₦" + subtotal.toFixed(2);
+
+
+        rows[1]
+            .querySelector("strong")
+            .textContent =
+            "₦" + validDiscount.toFixed(2);
+
+
+        rows[2]
+            .querySelector("strong")
+            .textContent =
+            "₦" + total.toFixed(2);
+
+
+        rows[3]
+            .querySelector("strong")
+            .textContent =
+            "₦" + paid.toFixed(2);
+
+
+        rows[4]
+            .querySelector("strong")
+            .textContent =
+            "₦" + balance.toFixed(2);
+
+
+        const statusBox =
+            rows[5].querySelector(
+                ".status"
+            );
+
+
+        if (statusBox) {
+
+            statusBox.textContent =
+                status;
+
+            statusBox.className =
+                "status " +
+                (
+                    status === "Paid"
+                    ? "paid"
+                    : status === "Partially Paid"
+                    ? "partial"
+                    : "unpaid"
+                );
+
+        }
+
+    }
+
+
+    
+
+      
+          
+
+      
+          
+
+        
+          
+
+        
+      
+
+      
+        
+
+        
+            
+
+    
+
+
+
+/* =========================
+   WATCH ORDER FIELDS
+========================= */
+
+function connectOrderCalculation() {
+
+    const fields =
+        itemsSection.querySelectorAll(
+            "input"
+        );
+
+
+    fields.forEach(function(field) {
+
+        field.addEventListener(
+            "input",
+            calculateCustomerOrder
+        );
+
+    });
+
+
+    const discount =
+        document.getElementById(
+            "invoiceDiscount"
+        );
+
+
+    const amountPaid =
+        document.getElementById(
+            "invoiceAmountPaid"
+        );
+
+
+    if (discount) {
+
+        discount.addEventListener(
+            "input",
+            calculateCustomerOrder
+        );
+
+    }
+
+
+    if (amountPaid) {
+
+        amountPaid.addEventListener(
+            "input",
+            calculateCustomerOrder
+        );
+
+    }
+
+}
+
+
+connectOrderCalculation();
+
+calculateCustomerOrder();
+
+
+/* =========================
+   REMOVE CUSTOMER
+========================= */
+
+function addRemoveCustomerButtons() {
+
+    const cards =
+        customerPage.querySelectorAll(
+            ".customer-card"
+        );
+
+
+    cards.forEach(function(card) {
+
+        if (
+            card.querySelector(
+                ".remove-customer-button"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        const heading =
+            card.querySelector("h3");
+
+
+        if (!heading) {
+
+            return;
+
+        }
+
+
+        const customerName =
+            heading.textContent
+                .replace("👤", "")
+                .trim();
+
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+
+        button.type =
+            "button";
+
+
+        button.className =
+            "remove-customer-button";
+
+
+        button.textContent =
+            "🗑️ Remove Customer";
+
+
+        button.style.width =
+            "100%";
+
+
+        button.style.marginTop =
+            "15px";
+
+
+        button.style.padding =
+            "12px";
+
+
+        button.style.border =
+            "none";
+
+
+        button.style.borderRadius =
+            "10px";
+
+
+        button.style.background =
+            "#fee2e2";
+
+
+        button.style.color =
+            "#991b1b";
+
+
+        button.style.fontWeight =
+            "bold";
+
+
+        button.onclick =
+            function() {
+
+                const answer =
+                    confirm(
+                        "Remove " +
+                        customerName +
+                        " from saved customers?"
+                    );
+
+
+                if (!answer) {
+
+                    return;
+
+                }
+
+
+                let customers =
+                    getCustomers();
+
+
+                customers =
+                    customers.filter(
+                        function(customer) {
+
+                            return customer.name
+                                .toLowerCase()
+                                !== customerName
+                                    .toLowerCase();
+
+                        }
+                    );
+
+
+                saveCustomers(
+                    customers
+                );
+
+
+                displayCustomers();
+
+                loadSavedCustomers();
+
+
+                alert(
+                    "Customer removed successfully."
+                );
+
+            };
+
+
+        card.appendChild(
+            button
+        );
+
+    });
+
+}
+
+
+/* =========================
+   REFRESH CUSTOMER BUTTONS
+========================= */
+
+const originalDisplayCustomers =
+    displayCustomers;
+
+
+displayCustomers =
+    function() {
+
+        originalDisplayCustomers();
+
+        setTimeout(
+            addRemoveCustomerButtons,
+            50
+        );
+
+    };
+
+
+displayCustomers();
+
+</script>
+<script>
+
+/* =========================
+   ORDER TOTAL BOX
+========================= */
+
+const orderTotalBox =
+    document.createElement("div");
+
+orderTotalBox.id =
+    "orderTotalBox";
+
+orderTotalBox.style.marginTop =
+    "18px";
+
+orderTotalBox.style.padding =
+    "18px";
+
+orderTotalBox.style.borderRadius =
+    "14px";
+
+orderTotalBox.style.background =
+    "linear-gradient(135deg,#dbeafe,#cffafe)";
+
+orderTotalBox.style.border =
+    "2px solid #38bdf8";
+
+orderTotalBox.style.display =
+    "flex";
+
+orderTotalBox.style.justifyContent =
+    "space-between";
+
+orderTotalBox.style.alignItems =
+    "center";
+
+orderTotalBox.innerHTML = `
+
+    <strong>
+        🛒 ORDER TOTAL
+    </strong>
+
+    <strong
+        id="orderTotalAmount"
+        style="
+            font-size:20px;
+            color:#075985;
+        "
+    >
+        ₦0.00
+    </strong>
+
+`;
+
+
+/* Put it directly after the item area */
+
+itemsSection.parentNode.insertBefore(
+    orderTotalBox,
+    itemsSection.nextSibling
+);
+
+
+/* =========================
+   UPDATE ORDER TOTAL
+========================= */
+
+function updateOrderTotalBox() {
+
+    const items =
+        itemsSection.querySelectorAll(
+            ".item-box"
+        );
+
+
+    let total = 0;
+
+
+    items.forEach(function(item) {
+
+        const quantity =
+            Number(
+                item.querySelector(
+                    ".product-quantity"
+                ).value
+            ) || 0;
+
+
+        const price =
+            Number(
+                item.querySelector(
+                    ".product-price"
+                ).value
+            ) || 0;
+
+
+        total +=
+            quantity * price;
+
+    });
+
+
+    document.getElementById(
+        "orderTotalAmount"
+    ).textContent =
+        "₦" + total.toFixed(2);
+
+}
+
+
+/* =========================
+   WATCH ITEM CHANGES
+========================= */
+
+function connectOrderTotalInputs() {
+
+    const inputs =
+        itemsSection.querySelectorAll(
+            "input"
+        );
+
+
+    inputs.forEach(function(input) {
+
+        input.addEventListener(
+            "input",
+            updateOrderTotalBox
+        );
+
+    });
+
+}
+
+
+connectOrderTotalInputs();
+
+updateOrderTotalBox();
+
+</script>
+<script>
+
+/* =========================
+   BILLORA MAIN CALCULATOR
+========================= */
+
+function calculateInvoice() {
+
+    const items =
+        itemsSection.querySelectorAll(
+            ".item-box"
+        );
+
+    let subtotal = 0;
+
+
+    items.forEach(function(item) {
+
+        const quantity =
+            Number(
+                item.querySelector(
+                    ".product-quantity"
+                )?.value
+            ) || 0;
+
+
+        const price =
+            Number(
+                item.querySelector(
+                    ".product-price"
+                )?.value
+            ) || 0;
+
+
+        const itemTotal =
+            quantity * price;
+
+
+        subtotal += itemTotal;
+
+
+        const totalDisplay =
+            item.querySelector(
+                ".item-total"
+            );
+
+
+        if (totalDisplay) {
+
+            totalDisplay.textContent =
+                "₦" +
+                itemTotal.toFixed(2);
+
+        }
+
+    });
+
+
+    /* ORDER TOTAL */
+
+    const orderTotal =
+        document.getElementById(
+            "orderTotalAmount"
+        );
+
+
+    if (orderTotal) {
+
+        orderTotal.textContent =
+            "₦" +
+            subtotal.toFixed(2);
+
+    }
+
+
+    /* DISCOUNT */
+
+    const discountInput =
+        document.getElementById(
+            "invoiceDiscount"
+        );
+
+
+    const discount =
+        Math.max(
+            0,
+            Number(
+                discountInput?.value
+            ) || 0
+        );
+
+
+    const validDiscount =
+        Math.min(
+            discount,
+            subtotal
+        );
+
+
+    /* FINAL TOTAL */
+
+    const total =
+        subtotal -
+        validDiscount;
+
+
+    /* AMOUNT PAID */
+
+    const paidInput =
+        document.getElementById(
+            "invoiceAmountPaid"
+        );
+
+
+    let paid =
+        Math.max(
+            0,
+            Number(
+                paidInput?.value
+            ) || 0
+        );
+
+
+    if (paid > total) {
+
+        paid = total;
+
+        if (paidInput) {
+
+            paidInput.value =
+                paid;
+
+        }
+
+    }
+
+
+    /* BALANCE */
+
+    const balance =
+        Math.max(
+            0,
+            total - paid
+        );
+
+
+    /* PAYMENT STATUS */
+
+    let status =
+        "Unpaid";
+
+
+    if (
+        total > 0 &&
+        paid >= total
+    ) {
+
+        status =
+            "Paid";
+
+    }
+    else if (
+        paid > 0
+    ) {
+
+        status =
+            "Partially Paid";
+
+    }
+
+
+    /* SUMMARY */
+
+    const rows =
+        invoicePage.querySelectorAll(
+            ".summary-row"
+        );
+
+
+    if (rows.length >= 5) {
+
+        rows[0]
+            .querySelector("strong")
+            .textContent =
+            "₦" +
+            subtotal.toFixed(2);
+
+
+        rows[1]
+            .querySelector("strong")
+            .textContent =
+            "₦" +
+            validDiscount.toFixed(2);
+
+
+        rows[2]
+            .querySelector("strong")
+            .textContent =
+            "₦" +
+            total.toFixed(2);
+
+
+        rows[3]
+            .querySelector("strong")
+            .textContent =
+            "₦" +
+            paid.toFixed(2);
+
+
+        rows[4]
+            .querySelector("strong")
+            .textContent =
+            "₦" +
+            balance.toFixed(2);
+
+    }
+
+
+    return {
+
+        subtotal:
+            subtotal,
+
+        discount:
+            validDiscount,
+
+        total:
+            total,
+
+        paid:
+            paid,
+
+        balance:
+            balance,
+
+        status:
+            status
+
+    };
+
+}
+
+
+/* =========================
+   CONNECT ALL PRICE FIELDS
+========================= */
+
+function connectInvoiceCalculator() {
+
+    const inputs =
+        itemsSection.querySelectorAll(
+            "input"
+        );
+
+
+    inputs.forEach(function(input) {
+
+        input.addEventListener(
+            "input",
+            calculateInvoice
+        );
+
+    });
+
+
+    const discount =
+        document.getElementById(
+            "invoiceDiscount"
+        );
+
+
+    const paid =
+        document.getElementById(
+            "invoiceAmountPaid"
+        );
+
+
+    if (discount) {
+
+        discount.addEventListener(
+            "input",
+            calculateInvoice
+        );
+
+    }
+
+
+    if (paid) {
+
+        paid.addEventListener(
+            "input",
+            calculateInvoice
+        );
+
+    }
+
+}
+
+
+/* START CALCULATOR */
+
+connectInvoiceCalculator();
+
+calculateInvoice();
+
+</script>
+<script>
+
+/* =========================
+   BILLORA FINAL CALCULATOR
+========================= */
+
+document.addEventListener(
+    "input",
+    function(event) {
+
+        const target =
+            event.target;
+
+
+        /*
+         * Only calculate when the
+         * user changes quantity,
+         * price, discount or payment.
+         */
+
+        if (
+            target.classList.contains(
+                "product-quantity"
+            ) ||
+            target.classList.contains(
+                "product-price"
+            ) ||
+            target.id ===
+                "invoiceDiscount" ||
+            target.id ===
+                "invoiceAmountPaid"
+        ) {
+
+            runBilloraCalculation();
+
+        }
+
+    }
+);
+
+
+function runBilloraCalculation() {
+
+    const itemBoxes =
+        document.querySelectorAll(
+            ".item-box"
+        );
+
+
+    let subtotal = 0;
+
+
+    itemBoxes.forEach(
+        function(item) {
+
+            const quantityInput =
+                item.querySelector(
+                    ".product-quantity"
+                );
+
+
+            const priceInput =
+                item.querySelector(
+                    ".product-price"
+                );
+
+
+            if (
+                !quantityInput ||
+                !priceInput
+            ) {
+
+                return;
+
+            }
+
+
+            const quantity =
+                Number(
+                    quantityInput.value
+                ) || 0;
+
+
+            const price =
+                Number(
+                    priceInput.value
+                ) || 0;
+
+
+            const itemTotal =
+                quantity * price;
+
+
+            subtotal +=
+                itemTotal;
+
+
+            const itemTotalDisplay =
+                item.querySelector(
+                    ".item-total"
+                );
+
+
+            if (itemTotalDisplay) {
+
+                itemTotalDisplay.textContent =
+                    "₦" +
+                    itemTotal.toFixed(2);
+
+            }
+
+        }
+    );
+
+
+    /* ORDER TOTAL */
+
+    const orderTotal =
+        document.getElementById(
+            "orderTotalAmount"
+        );
+
+
+    if (orderTotal) {
+
+        orderTotal.textContent =
+            "₦" +
+            subtotal.toFixed(2);
+
+    }
+
+
+    /* DISCOUNT */
+
+    const discountInput =
+        document.getElementById(
+            "invoiceDiscount"
+        );
+
+
+    const discount =
+        Math.min(
+            subtotal,
+            Math.max(
+                0,
+                Number(
+                    discountInput
+                    ?.value
+                ) || 0
+            )
+        );
+
+
+    /* TOTAL */
+
+    const total =
+        subtotal - discount;
+
+
+    /* AMOUNT PAID */
+
+    const paidInput =
+        document.getElementById(
+            "invoiceAmountPaid"
+        );
+
+
+    let paid =
+        Math.max(
+            0,
+            Number(
+                paidInput?.value
+            ) || 0
+        );
+
+
+    if (paid > total) {
+
+        paid = total;
+
+        if (paidInput) {
+
+            paidInput.value =
+                paid;
+
+        }
+
+    }
+
+
+    /* BALANCE */
+
+    const balance =
+        Math.max(
+            0,
+            total - paid
+        );
+
+
+    /* STATUS */
+
+    let status =
+        "Unpaid";
+
+
+    if (
+        total > 0 &&
+        paid >= total
+    ) {
+
+        status =
+            "Paid";
+
+    }
+    else if (
+        paid > 0
+    ) {
+
+        status =
+            "Partially Paid";
+
+    }
+
+
+    /* SUMMARY */
+
+    const summaryRows =
+        document.querySelectorAll(
+            ".summary-row"
+        );
+
+
+    if (summaryRows.length >= 5) {
+
+        summaryRows[0]
+            .querySelector(
+                "strong"
+            )
+            .textContent =
+            "₦" +
+            subtotal.toFixed(2);
+
+
+        summaryRows[1]
+            .querySelector(
+                "strong"
+            )
+            .textContent =
+            "₦" +
+            discount.toFixed(2);
+
+
+        summaryRows[2]
+            .querySelector(
+                "strong"
+            )
+            .textContent =
+            "₦" +
+            total.toFixed(2);
+
+
+        summaryRows[3]
+            .querySelector(
+                "strong"
+            )
+            .textContent =
+            "₦" +
+            paid.toFixed(2);
+
+
+        summaryRows[4]
+            .querySelector(
+                "strong"
+            )
+            .textContent =
+            "₦" +
+            balance.toFixed(2);
+
+    }
+
+
+    /* STATUS DISPLAY */
+
+    const statusElements =
+        document.querySelectorAll(
+            ".summary-row .status"
+        );
+
+
+    statusElements.forEach(
+        function(element) {
+
+            element.textContent =
+                status;
+
+            element.className =
+                "status " +
+                (
+                    status === "Paid"
+                    ? "paid"
+                    : status === "Partially Paid"
+                    ? "partial"
+                    : "unpaid"
+                );
+
+        }
+    );
+
+}
+
+
+/* Calculate once when page loads */
+
+setTimeout(
+    runBilloraCalculation,
+    300
+);
+
+  function updateInvoiceCalculation() {
+
+    const items =
+        document.querySelectorAll(
+            "#itemsContainer .item-box"
+        );
+
+    let subtotal = 0;
+
+
+    items.forEach(function(item) {
+
+        const quantity =
+            Number(
+                item.querySelector(
+                    ".product-quantity"
+                ).value
+            ) || 0;
+
+
+        const price =
+            Number(
+                item.querySelector(
+                    ".product-price"
+                ).value
+            ) || 0;
+
+
+        const itemTotal =
+            quantity * price;
+
+
+        subtotal += itemTotal;
+
+
+        item.querySelector(
+            ".item-total"
+        ).textContent =
+            "₦" +
+            itemTotal.toFixed(2);
+
+    });
+
+
+    const orderTotal =
+        document.getElementById(
+            "orderTotalAmount"
+        );
+
+
+    if (orderTotal) {
+
+        orderTotal.textContent =
+            "₦" +
+            subtotal.toFixed(2);
+
+    }
+
+}
+
+
+/* =========================
+   ADD ANOTHER ITEM
+========================= */
+
+const addItemButton =
+    document.getElementById(
+        "addAnotherItem"
+    );
+
+
+if (addItemButton) {
+
+    addItemButton.onclick =
+        function() {
+
+            const container =
+                document.getElementById(
+                    "itemsContainer"
+                );
+
+
+            const itemCount =
+                container.querySelectorAll(
+                    ".item-box"
+                ).length + 1;
+
+
+            const newItem =
+                document.createElement(
+                    "div"
+                );
+
+
+            newItem.className =
+                "item-box";
+
+
+            newItem.innerHTML = `
+
+                <div class="item-number">
+                    Item ${itemCount}
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Product / Service
+                    </label>
+
+                    <input
+                        type="text"
+                        class="product-name"
+                        placeholder="Enter item name">
+
                 </div>
 
                 <div class="two-fields">
+
                     <div class="form-group">
-                        <label>Invoice Number</label>
-                        <input id="invoiceNumber" type="text" readonly>
+
+                        <label>
+                            Quantity
+                        </label>
+
+                        <input
+                            type="number"
+                            class="product-quantity"
+                            value="1"
+                            min="1">
+
                     </div>
+
                     <div class="form-group">
-                        <label>Invoice Date</label>
-                        <input id="invoiceDate" type="date">
+
+                        <label>
+                            Price
+                        </label>
+
+                        <input
+                            type="number"
+                            class="product-price"
+                            placeholder="Enter price"
+                            min="0">
+
                     </div>
-                </div>
-            </div>
 
-            <div class="box orange-box">
-                <div class="box-title">💰 Currency</div>
+                </div>
+
+                <div class="item-total-box">
+
+                    <span>
+                        Item Total
+                    </span>
+
+                    <strong class="item-total">
+                        ₦0.00
+                    </strong>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                newItem
+            );
+
+
+            updateInvoiceCalculation();
+
+        };
+
+}
+
+
+/* =========================
+   CALCULATE WHEN TYPING
+========================= */
+
+document.addEventListener(
+    "input",
+    function(event) {
+
+        if (
+            event.target.classList.contains(
+                "product-quantity"
+            ) ||
+            event.target.classList.contains(
+                "product-price"
+            )
+        ) {
+
+            updateInvoiceCalculation();
+
+        }
+
+    }
+);
+
+
+function updateInvoiceCalculation() {
+
+    const items =
+        document.querySelectorAll(
+            "#itemsContainer .item-box"
+        );
+
+    let subtotal = 0;
+
+
+    items.forEach(function(item) {
+
+        const quantity =
+            Number(
+                item.querySelector(
+                    ".product-quantity"
+                ).value
+            ) || 0;
+
+
+        const price =
+            Number(
+                item.querySelector(
+                    ".product-price"
+                ).value
+            ) || 0;
+
+
+        const itemTotal =
+            quantity * price;
+
+
+        subtotal += itemTotal;
+
+
+        item.querySelector(
+            ".item-total"
+        ).textContent =
+            "₦" +
+            itemTotal.toFixed(2);
+
+    });
+
+
+    const orderTotal =
+        document.getElementById(
+            "orderTotalAmount"
+        );
+
+
+    if (orderTotal) {
+
+        orderTotal.textContent =
+            "₦" +
+            subtotal.toFixed(2);
+
+    }
+
+}
+
+
+/* =========================
+   ADD ANOTHER ITEM
+========================= */
+
+const addItemButton =
+    document.getElementById(
+        "addAnotherItem"
+    );
+
+
+if (addItemButton) {
+
+    addItemButton.onclick =
+        function() {
+
+            const container =
+                document.getElementById(
+                    "itemsContainer"
+                );
+
+
+            const itemCount =
+                container.querySelectorAll(
+                    ".item-box"
+                ).length + 1;
+
+
+            const newItem =
+                document.createElement(
+                    "div"
+                );
+
+
+            newItem.className =
+                "item-box";
+
+
+            newItem.innerHTML = `
+
+                <div class="item-number">
+                    Item ${itemCount}
+                </div>
+
                 <div class="form-group">
-                    <label>Select Currency</label>
-                    <select id="currency">
-                        <option value="₦">₦ Nigerian Naira</option>
-                        <option value="$">$ US Dollar</option>
-                        <option value="£">£ British Pound</option>
-                        <option value="€">€ Euro</option>
-                        <option value="R">R South African Rand</option>
-                        <option value="₵">₵ Ghanaian Cedi</option>
-                        <option value="KSh">KSh Kenyan Shilling</option>
-                        <option value="د.إ">د.إ UAE Dirham</option>
-                    </select>
-                </div>
-            </div>
 
-            <div class="box green-box">
-                <div class="box-title">📦 Products & Services</div>
+                    <label>
+                        Product / Service
+                    </label>
 
-                <div id="itemsContainer"></div>
+                    <input
+                        type="text"
+                        class="product-name"
+                        placeholder="Enter item name">
 
-                <button type="button" class="btn blue-btn" id="addAnotherItem">
-                    ➕ Add Another Item
-                </button>
-
-                <div class="order-total-box">
-                    <strong>🛒 ORDER TOTAL</strong>
-                    <strong id="orderTotalAmount">₦0.00</strong>
-                </div>
-            </div>
-
-            <div class="box cyan-box">
-                <div class="box-title">💳 Payment Information</div>
-
-                <div class="form-group">
-                    <label>Discount</label>
-                    <input id="invoiceDiscount" type="number" value="0" min="0" placeholder="Enter discount">
                 </div>
 
-                <div class="form-group">
-                    <label>Amount Paid</label>
-                    <input id="invoiceAmountPaid" type="number" value="0" min="0" placeholder="Enter amount paid">
+                <div class="two-fields">
+
+                    <div class="form-group">
+
+                        <label>
+                            Quantity
+                        </label>
+
+                        <input
+                            type="number"
+                            class="product-quantity"
+                            value="1"
+                            min="1">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Price
+                        </label>
+
+                        <input
+                            type="number"
+                            class="product-price"
+                            placeholder="Enter price"
+                            min="0">
+
+                    </div>
+
                 </div>
 
-                <div class="form-group">
-                    <label>Payment Method</label>
-                    <select id="invoicePaymentMethod">
-                        <option value="Cash">Cash</option>
-                        <option value="Bank Transfer">Bank Transfer</option>
-                        <option value="POS">POS</option>
-                        <option value="Other">Other</option>
-                    </select>
+                <div class="item-total-box">
+
+                    <span>
+                        Item Total
+                    </span>
+
+                    <strong class="item-total">
+                        ₦0.00
+                    </strong>
+
                 </div>
-            </div>
 
-            <div class="box blue-box">
-                <div class="box-title">📋 Invoice Summary</div>
-                <div class="summary">
-                    <div class="summary-row"><span>Subtotal</span><strong id="summarySubtotal">₦0.00</strong></div>
-                    <div class="summary-row"><span>Discount</span><strong id="summaryDiscount">₦0.00</strong></div>
-                    <div class="summary-row"><span>Total Invoice</span><strong id="summaryTotal" class="big-total">₦0.00</strong></div>
-                    <div class="summary-row"><span>Amount Paid</span><strong id="summaryPaid">₦0.00</strong></div>
-                    <div class="summary-row"><span>Remaining Balance</span><strong id="summaryBalance">₦0.00</strong></div>
-                    <div class="summary-row"><span>Status</span><span id="summaryStatus" class="status unpaid">Unpaid</span></div>
-                </div>
-            </div>
+            `;
 
-            <div class="box dark-box">
-                <div class="box-title">💾 Invoice Actions</div>
-                <button class="btn green-btn" id="saveInvoice">💾 Save Invoice</button>
-                <button class="btn orange-btn" id="printInvoice">🖨️ Print / Save PDF</button>
-                <button class="btn blue-btn" id="newInvoice">➕ New Invoice</button>
-            </div>
 
-            <div class="box pink-box">
-                <div class="box-title">📚 Saved Invoices</div>
-                <div id="savedInvoices" class="invoice-list">
-                    <div class="empty">No saved invoices yet.</div>
-                </div>
-            </div>
-        </section>
+            container.appendChild(
+                newItem
+            );
 
-        <!-- CUSTOMERS -->
-        <section class="page">
-            <div class="page-title">
-                <h2>👥 Customers</h2>
-                <p>View customers, invoices and outstanding balances.</p>
-            </div>
 
-            <div class="box purple-box">
-                <div class="box-title">🔎 Search Customer</div>
-                <input id="customerSearch" type="text" placeholder="Search customer...">
-            </div>
+            updateInvoiceCalculation();
 
-            <div class="box pink-box">
-                <div class="box-title">➕ Add Customer</div>
-                <div class="form-group">
-                    <label>Customer Name</label>
-                    <input id="newCustomerName" type="text" placeholder="Enter customer name">
-                </div>
-                <div class="form-group">
-                    <label>Customer Phone</label>
-                    <input id="newCustomerPhone" type="tel" placeholder="Enter customer phone">
-                </div>
-                <button class="btn purple-btn" id="saveCustomer">💾 Save Customer</button>
-            </div>
+        };
 
-            <div id="customerList"></div>
-        </section>
+}
 
-        <!-- REPORTS -->
-        <section class="page">
-            <div class="page-title">
-                <h2>📊 Reports</h2>
-                <p>See your billing performance.</p>
-            </div>
-            <div class="box blue-box">
-                <div class="box-title">📈 Billing Summary</div>
-                <div class="dashboard-grid">
-                    <div class="stat-card"><small>Total Invoice</small><strong id="reportInvoice">₦0.00</strong></div>
-                    <div class="stat-card"><small>Total Paid</small><strong id="reportPaid">₦0.00</strong></div>
-                    <div class="stat-card"><small>Outstanding</small><strong id="reportOutstanding">₦0.00</strong></div>
-                    <div class="stat-card"><small>Invoices</small><strong id="reportCount">0</strong></div>
-                </div>
-            </div>
-        </section>
 
-        <!-- SETTINGS -->
-        <section class="page">
-            <div class="page-title">
-                <h2>⚙️ Business Settings</h2>
-                <p>Add your business information.</p>
-            </div>
-            <div class="box orange-box">
-                <div class="box-title">🏢 Business Information</div>
-                <div class="form-group"><label>Business Name</label><input id="businessName" type="text" placeholder="Enter business name"></div>
-                <div class="form-group"><label>Business Phone</label><input id="businessPhone" type="tel" placeholder="Enter business phone"></div>
-                <div class="form-group"><label>Business Email</label><input id="businessEmail" type="email" placeholder="Enter business email"></div>
-                <div class="form-group"><label>Business Address</label><textarea id="businessAddress" rows="3" placeholder="Enter business address"></textarea></div>
-                <button class="btn blue-btn" id="saveSettings">💾 Save Business Information</button>
-            </div>
-        </section>
-    </main>
-</div>
+/* =========================
+   CALCULATE WHEN TYPING
+========================= */
 
-<script src="script.js"></script>
+document.addEventListener(
+    "input",
+    function(event) {
+
+        if (
+            event.target.classList.contains(
+                "product-quantity"
+            ) ||
+            event.target.classList.contains(
+                "product-price"
+            )
+        ) {
+
+            updateInvoiceCalculation();
+
+        }
+
+    }
+);
+
+
+updateInvoiceCalculation();
+</script>
+
 </body>
 </html>
+
+
+
