@@ -1,629 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="Omo Rabi Software provides modern website development, software development, mobile app development, and cybersecurity solutions.">
-
-    <meta name="keywords"
-        content="Omo Rabi Software, website development, software development, mobile apps, cybersecurity, Nigeria">
-
-    <meta name="author" content="Omo Rabi Software">
-
-    <title>Omo Rabi Software | Digital Solutions</title>
-
-    <link rel="stylesheet" href="./style.css">
+    <title>Billora - Smart Billing</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+<header class="header">
+    <div class="logo">Bill<span>ora</span></div>
+    <div class="tagline">Smart Billing for Modern Businesses</div>
+</header>
 
-    <header class="site-header">
+<div class="container">
 
-    <nav class="navbar">
-
-        <a href="#home" class="logo">
-            Omo Rabi <span>Software</span>
-        </a>
-
-        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
-            ☰
-        </button>
-
-        <div class="nav-links" id="navLinks">
-
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-
-        </div>
-
+    <nav class="menu">
+        <button data-page="0">🏠 Dashboard</button>
+        <button data-page="1">🧾 Invoice</button>
+        <button data-page="2">👥 Customers</button>
+        <button data-page="3">📊 Reports</button>
+        <button data-page="4">⚙️ Settings</button>
     </nav>
 
-    </header>
-
-        </>
-
-    </>
-
-
     <main>
-
-        <!-- =========================
-             HERO
-        ========================== -->
-
-        <section id="home" class="hero">
-
-            <div class="hero-content">
-
-                <p class="hero-label">
-                    DIGITAL SOLUTIONS FOR THE FUTURE
-                </p>
-
-                <h1>
-                    Turning Ideas Into
-                    <span>Digital Solutions</span>
-                </h1>
-
-                <p class="hero-text">
-                    Omo Rabi Software builds modern websites, software,
-                    mobile applications, and cybersecurity solutions
-                    for businesses, organizations, and individuals.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="#services" class="btn btn-primary">
-                        Explore Our Services
-                    </a>
-
-                    <a href="#contact" class="btn btn-secondary">
-                        Start a Project
-                    </a>
-
-                </div>
-
+        <!-- DASHBOARD -->
+        <section class="page active">
+            <div class="page-title">
+                <h2>Smart Billing Dashboard</h2>
+                <p>Manage your invoices, customers and payments easily.</p>
             </div>
 
+            <div class="box blue-box">
+                <div class="box-title">📊 Business Overview</div>
+                <div class="dashboard-grid">
+                    <div class="stat-card"><small>Total Invoice</small><strong id="dashInvoice">₦0.00</strong></div>
+                    <div class="stat-card"><small>Total Paid</small><strong id="dashPaid">₦0.00</strong></div>
+                    <div class="stat-card"><small>Remaining</small><strong id="dashRemaining">₦0.00</strong></div>
+                    <div class="stat-card"><small>Customers</small><strong id="dashCustomers">0</strong></div>
+                </div>
+            </div>
+
+            <div class="box purple-box">
+                <div class="box-title">⚡ Quick Actions</div>
+                <button class="btn blue-btn" id="quickInvoice">➕ Create New Invoice</button>
+                <button class="btn purple-btn" id="quickCustomer">👤 Add Customer</button>
+            </div>
         </section>
 
-
-        <!-- =========================
-             SERVICES
-        ========================== -->
-
-   <section id="services">
-
-    <p class="section-label">WHAT WE DO</p>
-
-    <h2>Our Services</h2>
-
-    <p>
-        We provide practical digital solutions designed
-        to help businesses, organizations, and individuals.
-    </p>
-
-
-    <div class="services">
-
-
-        <!-- WEBSITE DEVELOPMENT -->
-
-        <div class="service-card">
-
-            <h3>Website Development</h3>
-
-            <p>
-                We create modern, responsive websites
-                for businesses, organizations, and individuals.
-            </p>
-
-            <a href="./services-website.html"
-               class="btn btn-primary">
-                Learn More
-            </a>
-
-        </div>
-
-
-        <!-- SOFTWARE DEVELOPMENT -->
-
-        <div class="service-card">
-
-            <h3>Software Development</h3>
-
-            <p>
-                We develop practical software solutions
-                designed to solve real business and everyday problems.
-            </p>
-
-            <a href="./services-software.html"
-               class="btn btn-primary">
-                Learn More
-            </a>
-
-        </div>
-
-
-        <!-- MOBILE APP DEVELOPMENT -->
-
-        <div class="service-card">
-
-            <h3>Mobile App Development</h3>
-
-            <p>
-                We build useful and user-friendly mobile
-                applications for different needs and audiences.
-            </p>
-
-            <a href="./services-mobile.html"
-               class="btn btn-primary">
-                Learn More
-            </a>
-
-        </div>
-
-
-        <!-- CYBERSECURITY -->
-
-        <div class="service-card">
-
-            <h3>Cybersecurity</h3>
-
-            <p>
-                We provide security-focused solutions
-                for websites, software, systems, and digital information.
-            </p>
-
-            <a href="./services-cybersecurity.html"
-               class="btn btn-primary">
-                Learn More
-            </a>
-
-        </div>
-
-
-    </div>
-
-   </section>     
-
-          
-
-            
-
-              
-
-                <p>
-                    We provide practical digital solutions designed
-                    to help businesses and individuals solve problems,
-                    improve their services, and grow.
-                </p>
-
-            </>
-
-
-            <div class="services-grid">
-
-                <article class="service-card">
-
-                    <div class="service-icon">01</div>
-
-                    <h3>Website Development</h3>
-
-                    <p>
-                        We create modern, responsive, and user-friendly
-                        websites for businesses, organizations, and
-                        individuals.
-                    </p>
-
-                    <a href="#contact">Learn More →</a>
-
-                </article>
-
-
-                <article class="service-card">
-
-                    <div class="service-icon">02</div>
-
-                    <h3>Software Development</h3>
-
-                    <p>
-                        We develop practical software solutions designed
-                        to solve real business and everyday problems.
-                    </p>
-
-                    <a href="#contact">Learn More →</a>
-
-                </article>
-
-
-                <article class="service-card">
-
-                    <div class="service-icon">03</div>
-
-                    <h3>Mobile App Development</h3>
-
-                    <p>
-                        We build useful and user-friendly mobile
-                        applications for different needs and audiences.
-                    </p>
-
-                    <a href="#contact">Learn More →</a>
-
-                </article>
-
-
-                <article class="service-card">
-
-                    <div class="service-icon">04</div>
-
-                    <h3>Cybersecurity</h3>
-
-                    <p>
-                        We provide cybersecurity solutions focused on
-                        protecting websites, systems, software, and
-                        digital information.
-                    </p>
-
-                    <a href="#contact">Learn More →</a>
-
-                </article>
-
+        <!-- INVOICE -->
+        <section class="page">
+            <div class="page-title">
+                <h2>🧾 Create Invoice</h2>
+                <p>Create a professional invoice for your customer.</p>
             </div>
 
-        </>
+            <div class="box purple-box">
+                <div class="box-title">👤 Customer Information</div>
 
-
-        <!-- =========================
-             WHY CHOOSE US
-        ========================== -->
-
-        <section class="why-us">
-
-            <div class="why-content">
-
-                <p class="section-label">WHY OMO RABI</p>
-
-                <h2>Technology Built Around Your Needs</h2>
-
-                <p>
-                    We believe technology should make life and business
-                    easier. Our goal is to create digital products that
-                    are useful, reliable, secure, and easy to use.
-                </p>
-
-                <div class="features">
-
-                    <div>
-                        <strong>01</strong>
-                        <h3>Reliable Solutions</h3>
-                        <p>
-                            We focus on building solutions that work
-                            effectively and solve real problems.
-                        </p>
-                    </div>
-
-                    <div>
-                        <strong>02</strong>
-                        <h3>User Focused</h3>
-                        <p>
-                            We design with the people who will actually
-                            use the product in mind.
-                        </p>
-                    </div>
-
-                    <div>
-                        <strong>03</strong>
-                        <h3>Security Minded</h3>
-                        <p>
-                            Security is considered when building and
-                            protecting digital solutions.
-                        </p>
-                    </div>
-
+                <div class="form-group">
+                    <label>Customer Name</label>
+                    <input id="customerName" type="text" placeholder="Enter customer name">
                 </div>
 
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             PORTFOLIO
-        ========================== -->
-
-        <section id="portfolio" class="section">
-
-            <div class="section-heading">
-
-                <p class="section-label">OUR WORK</p>
-
-                <h2>Our Portfolio</h2>
-
-                <p>
-                    A look at the types of digital projects
-                    Omo Rabi Software can build.
-                </p>
-
-            </div>
-
-
-            <div class="portfolio-grid">
-
-                <article class="portfolio-card">
-
-                    <div class="portfolio-image website-project">
-                        Website
-                    </div>
-
-                    <div class="portfolio-content">
-
-                        <span>WEB DEVELOPMENT</span>
-
-                        <h3>Business Website</h3>
-
-                        <p>
-                            A modern responsive website designed
-                            for a growing business.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article class="portfolio-card">
-
-                    <div class="portfolio-image software-project">
-                        Software
-                    </div>
-
-                    <div class="portfolio-content">
-
-                        <span>SOFTWARE</span>
-
-                        <h3>Business Software</h3>
-
-                        <p>
-                            Digital software designed to improve
-                            business operations.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article class="portfolio-card">
-
-                    <div class="portfolio-image mobile-project">
-                        Mobile App
-                    </div>
-
-                    <div class="portfolio-content">
-
-                        <span>MOBILE DEVELOPMENT</span>
-
-                        <h3>Mobile Application</h3>
-
-                        <p>
-                            A user-friendly mobile application
-                            designed for everyday use.
-                        </p>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ABOUT
-        ========================== -->
-
-        <section id="about" class="section about-section">
-
-            <div class="section-heading">
-
-                <p class="section-label">ABOUT US</p>
-
-                <h2>About Omo Rabi Software</h2>
-
-            </div>
-
-
-            <div class="about-content">
-
-                <div>
-
-                    <h3>Who We Are</h3>
-
-                    <p>
-                        Omo Rabi Software is a technology brand focused
-                        on building innovative digital solutions for
-                        businesses, organizations, and individuals.
-                    </p>
-
-                    <p>
-                        We use technology to transform ideas into
-                        practical digital products that can create
-                        value and solve real-world problems.
-                    </p>
-
+                <div class="form-group">
+                    <label>Customer Phone</label>
+                    <input id="customerPhone" type="tel" placeholder="Enter customer phone">
                 </div>
 
-
-                <div class="about-box">
-
-                    <h3>Our Mission</h3>
-
-                    <p>
-                        To use technology to turn ideas into practical
-                        digital solutions that create value and make
-                        a positive impact.
-                    </p>
-
+                <div class="two-fields">
+                    <div class="form-group">
+                        <label>Invoice Number</label>
+                        <input id="invoiceNumber" type="text" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Invoice Date</label>
+                        <input id="invoiceDate" type="date">
+                    </div>
                 </div>
-
-
-                <div class="about-box">
-
-                    <h3>Our Vision</h3>
-
-                    <p>
-                        To become a trusted technology brand known for
-                        useful, reliable, secure, and innovative digital
-                        solutions.
-                    </p>
-
-                </div>
-
             </div>
 
-        </section>
-
-
-        <!-- =========================
-             CALL TO ACTION
-        ========================== -->
-
-        <section class="cta">
-
-            <p class="section-label">LET'S BUILD TOGETHER</p>
-
-            <h2>Have an Idea?</h2>
-
-            <p>
-                Let's turn your idea into a practical digital solution.
-            </p>
-
-            <a href="#contact" class="btn btn-primary">
-                Start Your Project
-            </a>
-
-        </section>
-
-
-        <!-- =========================
-             CONTACT
-        ========================== -->
-
-        <section id="contact" class="section contact-section">
-
-            <div class="section-heading">
-
-                <p class="section-label">GET IN TOUCH</p>
-
-                <h2>Contact Omo Rabi Software</h2>
-
-                <p>
-                    Have a project, business idea, or digital problem?
-                    Send us a message.
-                </p>
-
+            <div class="box orange-box">
+                <div class="box-title">💰 Currency</div>
+                <div class="form-group">
+                    <label>Select Currency</label>
+                    <select id="currency">
+                        <option value="₦">₦ Nigerian Naira</option>
+                        <option value="$">$ US Dollar</option>
+                        <option value="£">£ British Pound</option>
+                        <option value="€">€ Euro</option>
+                        <option value="R">R South African Rand</option>
+                        <option value="₵">₵ Ghanaian Cedi</option>
+                        <option value="KSh">KSh Kenyan Shilling</option>
+                        <option value="د.إ">د.إ UAE Dirham</option>
+                    </select>
+                </div>
             </div>
 
+            <div class="box green-box">
+                <div class="box-title">📦 Products & Services</div>
 
-            <form class="contact-form">
+                <div id="itemsContainer"></div>
 
-                <label for="name">Your Name</label>
-
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Enter your name"
-                    required
-                >
-
-
-                <label for="email">Your Email</label>
-
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    required
-                >
-
-
-                <label for="message">Your Message</label>
-
-                <textarea
-                    id="message"
-                    name="message"
-                    placeholder="Tell us about your project..."
-                    required
-                ></textarea>
-
-
-                <button type="submit" class="btn btn-primary">
-                    Send Message
+                <button type="button" class="btn blue-btn" id="addAnotherItem">
+                    ➕ Add Another Item
                 </button>
 
-            </form>
+                <div class="order-total-box">
+                    <strong>🛒 ORDER TOTAL</strong>
+                    <strong id="orderTotalAmount">₦0.00</strong>
+                </div>
+            </div>
 
+            <div class="box cyan-box">
+                <div class="box-title">💳 Payment Information</div>
+
+                <div class="form-group">
+                    <label>Discount</label>
+                    <input id="invoiceDiscount" type="number" value="0" min="0" placeholder="Enter discount">
+                </div>
+
+                <div class="form-group">
+                    <label>Amount Paid</label>
+                    <input id="invoiceAmountPaid" type="number" value="0" min="0" placeholder="Enter amount paid">
+                </div>
+
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select id="invoicePaymentMethod">
+                        <option value="Cash">Cash</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                        <option value="POS">POS</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="box blue-box">
+                <div class="box-title">📋 Invoice Summary</div>
+                <div class="summary">
+                    <div class="summary-row"><span>Subtotal</span><strong id="summarySubtotal">₦0.00</strong></div>
+                    <div class="summary-row"><span>Discount</span><strong id="summaryDiscount">₦0.00</strong></div>
+                    <div class="summary-row"><span>Total Invoice</span><strong id="summaryTotal" class="big-total">₦0.00</strong></div>
+                    <div class="summary-row"><span>Amount Paid</span><strong id="summaryPaid">₦0.00</strong></div>
+                    <div class="summary-row"><span>Remaining Balance</span><strong id="summaryBalance">₦0.00</strong></div>
+                    <div class="summary-row"><span>Status</span><span id="summaryStatus" class="status unpaid">Unpaid</span></div>
+                </div>
+            </div>
+
+            <div class="box dark-box">
+                <div class="box-title">💾 Invoice Actions</div>
+                <button class="btn green-btn" id="saveInvoice">💾 Save Invoice</button>
+                <button class="btn orange-btn" id="printInvoice">🖨️ Print / Save PDF</button>
+                <button class="btn blue-btn" id="newInvoice">➕ New Invoice</button>
+            </div>
+
+            <div class="box pink-box">
+                <div class="box-title">📚 Saved Invoices</div>
+                <div id="savedInvoices" class="invoice-list">
+                    <div class="empty">No saved invoices yet.</div>
+                </div>
+            </div>
         </section>
 
+        <!-- CUSTOMERS -->
+        <section class="page">
+            <div class="page-title">
+                <h2>👥 Customers</h2>
+                <p>View customers, invoices and outstanding balances.</p>
+            </div>
+
+            <div class="box purple-box">
+                <div class="box-title">🔎 Search Customer</div>
+                <input id="customerSearch" type="text" placeholder="Search customer...">
+            </div>
+
+            <div class="box pink-box">
+                <div class="box-title">➕ Add Customer</div>
+                <div class="form-group">
+                    <label>Customer Name</label>
+                    <input id="newCustomerName" type="text" placeholder="Enter customer name">
+                </div>
+                <div class="form-group">
+                    <label>Customer Phone</label>
+                    <input id="newCustomerPhone" type="tel" placeholder="Enter customer phone">
+                </div>
+                <button class="btn purple-btn" id="saveCustomer">💾 Save Customer</button>
+            </div>
+
+            <div id="customerList"></div>
+        </section>
+
+        <!-- REPORTS -->
+        <section class="page">
+            <div class="page-title">
+                <h2>📊 Reports</h2>
+                <p>See your billing performance.</p>
+            </div>
+            <div class="box blue-box">
+                <div class="box-title">📈 Billing Summary</div>
+                <div class="dashboard-grid">
+                    <div class="stat-card"><small>Total Invoice</small><strong id="reportInvoice">₦0.00</strong></div>
+                    <div class="stat-card"><small>Total Paid</small><strong id="reportPaid">₦0.00</strong></div>
+                    <div class="stat-card"><small>Outstanding</small><strong id="reportOutstanding">₦0.00</strong></div>
+                    <div class="stat-card"><small>Invoices</small><strong id="reportCount">0</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section class="page">
+            <div class="page-title">
+                <h2>⚙️ Business Settings</h2>
+                <p>Add your business information.</p>
+            </div>
+            <div class="box orange-box">
+                <div class="box-title">🏢 Business Information</div>
+                <div class="form-group"><label>Business Name</label><input id="businessName" type="text" placeholder="Enter business name"></div>
+                <div class="form-group"><label>Business Phone</label><input id="businessPhone" type="tel" placeholder="Enter business phone"></div>
+                <div class="form-group"><label>Business Email</label><input id="businessEmail" type="email" placeholder="Enter business email"></div>
+                <div class="form-group"><label>Business Address</label><textarea id="businessAddress" rows="3" placeholder="Enter business address"></textarea></div>
+                <button class="btn blue-btn" id="saveSettings">💾 Save Business Information</button>
+            </div>
+        </section>
     </main>
+</div>
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <div class="footer-content">
-
-            <div>
-
-                <h3>Omo Rabi Software</h3>
-
-                <p>
-                    Turning ideas into digital solutions.
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            <p>
-                &copy; 2026 Omo Rabi Software.
-                All rights reserved.
-            </p>
-
-        </div>
-
-    </footer>
-<script src="./script.js"></script>
+<script src="script.js"></script>
 </body>
-
 </html>
