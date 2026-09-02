@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>QueueLess — Queue Engine</title>
+
+    <link
+        rel="stylesheet"
+        href="queue.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="queue-container">
+
+
+        <!-- ======================================
+             PAGE HEADER
+        ======================================= -->
+
+        <header class="page-header">
+
+            <span class="section-label">
+                QUEUELESS
+            </span>
+
+            <h1>
+                Queue Engine
+            </h1>
+
+            <p>
+                Manage customers and control the
+                service queue.
+            </p>
+
+        </header>
+
+
+
+        <!-- ======================================
+             ADD CUSTOMER
+        ======================================= -->
+
+        <section class="queue-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        CUSTOMER ENTRY
+                    </span>
+
+                    <h2>
+                        Add Customer
+                    </h2>
+
+                    <p>
+                        Add a customer to the queue manually.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-field">
+
+                    <label for="customerName">
+                        CUSTOMER NAME
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Enter customer name"
+                    >
+
+                </div>
+
+
+
+                <div class="form-field">
+
+                    <label for="serviceSelect">
+                        SERVICE
+                    </label>
+
+                    <select id="serviceSelect">
+
+                        <option value="">
+                            Select service
+                        </option>
+
+                        <option value="Withdrawal">
+                            Withdrawal
+                        </option>
+
+                        <option value="Deposit">
+                            Deposit
+                        </option>
+
+                        <option value="Account Opening">
+                            Account Opening
+                        </option>
+
+                        <option value="Customer Service">
+                            Customer Service
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-field">
+
+                    <label for="servicePointSelect">
+                        SERVICE POINT
+                    </label>
+
+                    <select id="servicePointSelect">
+
+                        <option value="">
+                            Select service point
+                        </option>
+
+                        <option value="Teller">
+                            Teller
+                        </option>
+
+                        <option value="Customer Service Desk">
+                            Customer Service Desk
+                        </option>
+
+                        <option value="Card Services">
+                            Card Services
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+
+            <button
+                type="button"
+                class="primary-btn"
+                id="addCustomerBtn"
+            >
+                + Add Customer
+            </button>
+
+
+        </section>
+
+
+
+        <!-- ======================================
+             STAFF DASHBOARD
+        ======================================= -->
+
+        <section class="queue-panel staff-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        STAFF DASHBOARD
+                    </span>
+
+                    <h2>
+                        My Service Desk
+                    </h2>
+
+                    <p>
+                        Staff member currently serving customers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="staff-profile">
+
+
+                <div class="staff-avatar">
+                    T1
+                </div>
+
+
+
+                <div class="staff-details">
+
+                    <span>
+                        STAFF MEMBER
+                    </span>
+
+                    <strong id="staffName">
+                        Teller 01
+                    </strong>
+
+                </div>
+
+
+
+                <div class="staff-details">
+
+                    <span>
+                        STAFF ID
+                    </span>
+
+                    <strong id="staffId">
+                        TELLER-001
+                    </strong>
+
+                </div>
+
+
+
+                <div class="staff-details">
+
+                    <span>
+                        SERVICE POINT
+                    </span>
+
+                    <strong id="staffServicePoint">
+                        Teller
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             NEXT CUSTOMER
+        ======================================= -->
+
+        <section class="queue-panel next-customer-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        STAFF ACTION
+                    </span>
+
+                    <h2>
+                        Next Customer
+                    </h2>
+
+                    <p>
+                        The next customer waiting for service.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                id="nextCustomer"
+                class="next-customer"
+            >
+
+                <div class="next-customer-empty">
+
+                    <strong>
+                        No customer waiting
+                    </strong>
+
+                    <p>
+                        The next waiting customer
+                        will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             CURRENTLY SERVING
+        ======================================= -->
+
+        <section class="queue-panel serving-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        ACTIVE SERVICE
+                    </span>
+
+                    <h2>
+                        Currently Serving
+                    </h2>
+
+                    <p>
+                        Customer currently being served
+                        by this staff member.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                id="currentlyServing"
+                class="currently-serving"
+            >
+
+                <div class="currently-serving-empty">
+
+                    <strong>
+                        No customer being served
+                    </strong>
+
+                    <p>
+                        A customer will appear here
+                        when service starts.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             CURRENT QUEUE
+        ======================================= -->
+
+        <section class="queue-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        CURRENT QUEUE
+                    </span>
+
+                    <h2>
+                        Customers Waiting
+                    </h2>
+
+                    <p>
+                        Manage customers currently in the queue.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 QUEUE SUMMARY
+            =================================== -->
+
+            <div class="queue-summary">
+
+
+                <div class="summary-card">
+
+                    <span>
+                        WAITING
+                    </span>
+
+                    <strong id="waitingCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div class="summary-card">
+
+                    <span>
+                        CALLED
+                    </span>
+
+                    <strong id="calledCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div class="summary-card">
+
+                    <span>
+                        SERVING
+                    </span>
+
+                    <strong id="servingCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div class="summary-card">
+
+                    <span>
+                        COMPLETED
+                    </span>
+
+                    <strong id="completedCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ==================================
+                 QUEUE LIST
+            =================================== -->
+
+            <div
+                id="queueList"
+                class="queue-list"
+            >
+
+                <!-- JavaScript customer tickets appear here -->
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ======================================
+         QUEUE JAVASCRIPT
+    ======================================= -->
+
+    <script src="queue.js"></script>
+
+
+</body>
+
+</html>
