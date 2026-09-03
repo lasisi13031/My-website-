@@ -1,0 +1,278 @@
+/* =====================================================
+   QUEUELESS — CUSTOMER HISTORY
+   Omo Rabi Software
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+    line-height: 1.5;
+}
+
+.history-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px 50px;
+}
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #526070;
+    margin-bottom: 8px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: #697586;
+}
+
+/* =====================================================
+   HISTORY PANELS
+===================================================== */
+
+.history-panel {
+    background: #ffffff;
+    border: 1px solid #e4e8ef;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 20px rgba(23, 32, 51, 0.05);
+}
+
+.panel-header {
+    margin-bottom: 22px;
+}
+
+.panel-header h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.panel-header p {
+    color: #697586;
+    font-size: 14px;
+}
+
+/* =====================================================
+   SUMMARY CARDS
+===================================================== */
+
+.history-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.summary-card {
+    background: #f8fafc;
+    border: 1px solid #e6eaf0;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.summary-card span {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #697586;
+    margin-bottom: 8px;
+}
+
+.summary-card strong {
+    font-size: 28px;
+}
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.history-search {
+    margin-bottom: 20px;
+}
+
+.history-search input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #d8dee8;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #172033;
+    font-size: 15px;
+    outline: none;
+}
+
+.history-search input:focus {
+    border-color: #526070;
+    box-shadow: 0 0 0 3px rgba(82, 96, 112, 0.10);
+}
+
+/* =====================================================
+   HISTORY LIST
+===================================================== */
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.history-empty {
+    text-align: center;
+    padding: 40px 20px;
+    border: 1px dashed #d8dee8;
+    border-radius: 12px;
+    background: #fafbfc;
+}
+
+.history-empty strong {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+.history-empty p {
+    color: #697586;
+    font-size: 14px;
+}
+
+/* =====================================================
+   HISTORY RECORD
+===================================================== */
+
+.history-record {
+    border: 1px solid #e1e6ee;
+    border-radius: 14px;
+    padding: 20px;
+    background: #ffffff;
+}
+
+.history-record-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.history-record-header strong {
+    font-size: 18px;
+}
+
+.history-record-header span {
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #eef2f6;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.history-record-body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 24px;
+    padding: 18px 0;
+}
+
+.history-record-body p {
+    font-size: 14px;
+    color: #596579;
+}
+
+.history-record-body p strong {
+    color: #172033;
+}
+
+.history-record-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding-top: 14px;
+    border-top: 1px solid #edf0f4;
+}
+
+.history-record-footer small {
+    color: #7a8494;
+    font-size: 12px;
+}
+
+/* =====================================================
+   MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .history-container {
+        padding: 20px 14px 40px;
+    }
+
+    .page-header h1 {
+        font-size: 27px;
+    }
+
+    .history-panel {
+        padding: 18px;
+        border-radius: 13px;
+    }
+
+    .history-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .summary-card {
+        padding: 16px;
+    }
+
+    .summary-card strong {
+        font-size: 24px;
+    }
+
+    .history-record-body {
+        grid-template-columns: 1fr;
+    }
+
+    .history-record-footer {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .history-summary {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .summary-card {
+        padding: 14px;
+    }
+
+    .summary-card strong {
+        font-size: 22px;
+    }
+}
