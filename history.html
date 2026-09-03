@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>QueueLess — History</title>
+
+    <link
+        rel="stylesheet"
+        href="history.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="history-container">
+
+
+        <!-- ======================================
+             PAGE HEADER
+        ======================================= -->
+
+        <header class="page-header">
+
+            <span class="section-label">
+                QUEUELESS
+            </span>
+
+            <h1>
+                Customer History
+            </h1>
+
+            <p>
+                View and review customer queue activity.
+            </p>
+
+        </header>
+
+
+
+        <!-- ======================================
+             HISTORY SUMMARY
+        ======================================= -->
+
+        <section class="history-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        HISTORY OVERVIEW
+                    </span>
+
+                    <h2>
+                        Queue Records
+                    </h2>
+
+                    <p>
+                        Summary of customer activity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="history-summary">
+
+
+                <div class="summary-card">
+
+                    <span>
+                        TOTAL
+                    </span>
+
+                    <strong id="totalHistory">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div class="summary-card">
+
+                    <span>
+                        COMPLETED
+                    </span>
+
+                    <strong id="completedHistory">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div class="summary-card">
+
+                    <span>
+                        SKIPPED
+                    </span>
+
+                    <strong id="skippedHistory">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div class="summary-card">
+
+                    <span>
+                        SERVING
+                    </span>
+
+                    <strong id="servingHistory">
+                        0
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             CUSTOMER HISTORY LIST
+        ======================================= -->
+
+        <section class="history-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        CUSTOMER RECORDS
+                    </span>
+
+                    <h2>
+                        History
+                    </h2>
+
+                    <p>
+                        Customer queue records will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+      
+    
+       
+   
+          <!-- HISTORY SEARCH -->
+
+<div class="history-search">
+
+    <input
+        type="search"
+        id="historySearch"
+        placeholder="Search ticket, customer, service, branch..."
+        autocomplete="off"
+    >
+
+</div>
+            <div
+                id="historyList"
+                class="history-list"
+            >
+
+                <div class="history-empty">
+
+                    <strong>
+                        No history records
+                    </strong>
+
+                    <p>
+                        Completed or skipped customers
+                        will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ======================================
+         HISTORY JAVASCRIPT
+    ======================================= -->
+
+    <script src="history.js"></script>
+
+
+</body>
+
+</html>
